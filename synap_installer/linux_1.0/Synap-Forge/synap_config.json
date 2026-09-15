@@ -1,0 +1,1 @@
+{"model_provider": {"primary": "local", "fallback_to_external": false, "local": {"endpoint": "http://localhost:11434", "port": 11434}}, "sanctum": {}}

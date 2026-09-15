@@ -1,0 +1,47 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-9.1.0, pluggy-1.6.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+hypothesis profile 'default'
+rootdir: /home/aaron/Synap-Forge/.consciousness_engine
+configfile: pytest.ini
+plugins: asyncio-1.4.0, xdist-3.8.0, hypothesis-6.156.6, anyio-3.7.1
+asyncio: mode=auto, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 1 item
+
+tests/test_compiler_state_machine.py::TestCompilerStateMachine::runTest <- ../../.local/lib/python3.10/site-packages/hypothesis/stateful.py PASSED
+
+=============================== warnings summary ===============================
+../../.local/lib/python3.10/site-packages/opentelemetry/util/_importlib_metadata.py:32
+  /home/aaron/.local/lib/python3.10/site-packages/opentelemetry/util/_importlib_metadata.py:32: DeprecationWarning: SelectableGroups dict interface is deprecated. Use select.
+    return EntryPoints(ep for group_eps in eps.values() for ep in group_eps)
+
+synap_server.py:1424
+  /home/aaron/Synap-Forge/.consciousness_engine/synap_server.py:1424: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    @app.on_event("startup")
+
+../../.local/lib/python3.10/site-packages/fastapi/applications.py:4656
+../../.local/lib/python3.10/site-packages/fastapi/applications.py:4656
+  /home/aaron/.local/lib/python3.10/site-packages/fastapi/applications.py:4656: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    return self.router.on_event(event_type)  # ty: ignore[deprecated]
+
+synap_server.py:1429
+  /home/aaron/Synap-Forge/.consciousness_engine/synap_server.py:1429: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    @app.on_event("shutdown")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================== 1 passed, 5 warnings in 227.60s (0:03:47) ===================

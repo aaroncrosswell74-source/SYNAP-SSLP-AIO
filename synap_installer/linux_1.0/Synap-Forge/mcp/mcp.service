@@ -1,0 +1,17 @@
+[Unit]
+Description=MCP Gateway Service
+After=network.target
+
+[Service]
+Type=simple
+User=aaron
+WorkingDirectory=/home/aaron/Synap-Forge/mcp
+Environment="PYTHONPATH=/home/aaron/Synap-Forge:/home/aaron/Synap-Forge/.consciousness_engine"
+ExecStart=/usr/bin/python3 /home/aaron/Synap-Forge/mcp/mcp_server.py
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,223 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-9.1.0, pluggy-1.6.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+hypothesis profile 'default'
+rootdir: /home/aaron/Synap-Forge/.consciousness_engine
+configfile: pytest.ini
+plugins: asyncio-1.4.0, xdist-3.8.0, hypothesis-6.156.6, anyio-3.7.1
+asyncio: mode=auto, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 25 items
+
+tests/test_boot_lifecycle.py::test_boot_sequence_ordered PASSED          [  4%]
+tests/test_boot_lifecycle.py::test_boot_failure_isolation PASSED         [  8%]
+tests/test_compiler.py::test_compiler_success PASSED                     [ 12%]
+tests/test_compiler.py::test_compiler_retry_on_empty FAILED              [ 16%]
+tests/test_compiler_state_machine.py::TestCompilerStateMachine::runTest FAILED [ 20%]
+tests/test_compiler_state_machine.py::test_prompt_determinism PASSED     [ 24%]
+tests/test_compiler_state_machine.py::test_rollback_inverse PASSED       [ 28%]
+tests/test_compiler_state_machine.py::test_control_frame_never_promptable PASSED [ 32%]
+tests/test_e2e_thought_loop.py::test_thought_loop_generates_output FAILED [ 36%]
+tests/test_e2e_thought_loop.py::test_dashboard_stream_receives_events FAILED [ 40%]
+
+=================================== FAILURES ===================================
+_________________________ test_compiler_retry_on_empty _________________________
+
+compiler_with_mocks = <ir.compiler.Compiler object at 0x77a52ddb2ad0>
+
+    @pytest.mark.asyncio
+    async def test_compiler_retry_on_empty(compiler_with_mocks):
+        """Test compiler retries on empty response"""
+    
+        # Async generator that returns empty (triggers retry)
+        async def mock_llm_generator(prompt, stop=None):
+            yield ""  # Empty response
+    
+>       response, result = await compiler_with_mocks.run(
+            user_input="Hello",
+            llm_generator=mock_llm_generator,
+            max_retries=1,
+        )
+E       TypeError: cannot unpack non-iterable NoneType object
+
+tests/test_compiler.py:37: TypeError
+_______________________ TestCompilerStateMachine.runTest _______________________
+
+self = <hypothesis.stateful.CompilerStateMachine.TestCase testMethod=runTest>
+
+    def runTest(self):
+>       run_state_machine_as_test(cls, settings=self.settings)
+
+../../.local/lib/python3.10/site-packages/hypothesis/stateful.py:504: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+state_machine_factory = <class 'test_compiler_state_machine.CompilerStateMachine'>
+settings = settings(backend='hypothesis', database=DirectoryBasedExampleDatabase(PosixPath('/home/aaron/Synap-Forge/.consciousnes...hCheck.function_scoped_fixture, HealthCheck.differing_executors, HealthCheck.nested_given), verbosity=Verbosity.normal)
+_min_steps = 0
+
+    def run_state_machine_as_test(state_machine_factory, *, settings=None, _min_steps=0):
+        """Run a state machine definition as a test, either silently doing nothing
+        or printing a minimal breaking program and raising an exception.
+    
+        state_machine_factory is anything which returns an instance of
+        RuleBasedStateMachine when called with no arguments - it can be a class or a
+        function. settings will be used to control the execution of the test.
+        """
+        flaky_state = {"selecting_rule": False}
+        state_machine_test = get_state_machine_test(
+            state_machine_factory,
+            settings=settings,
+            _min_steps=_min_steps,
+            _flaky_state=flaky_state,
+        )
+        try:
+>           state_machine_test()
+
+../../.local/lib/python3.10/site-packages/hypothesis/stateful.py:268: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    @settings
+>   @given(st.data())
+
+../../.local/lib/python3.10/site-packages/hypothesis/stateful.py:119: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = CompilerStateMachine({})
+
+    @invariant()
+    def check_retry_after_rollback(self):
+        """Retry count must remain coherent after rollback."""
+        assert self.compiler._retry_count >= 0
+>       assert self.compiler._retry_count <= self.compiler._max_retries
+E       assert 3 <= 2
+E        +  where 3 = <ir.compiler.Compiler object at 0x77a52ddb2e90>._retry_count
+E        +    where <ir.compiler.Compiler object at 0x77a52ddb2e90> = CompilerStateMachine({}).compiler
+E        +  and   2 = <ir.compiler.Compiler object at 0x77a52ddb2e90>._max_retries
+E        +    where <ir.compiler.Compiler object at 0x77a52ddb2e90> = CompilerStateMachine({}).compiler
+E       Falsifying example:
+E       state = CompilerStateMachine()
+E       state.setup()
+E       state.check_checkpoint_coherence()
+E       state.check_integrity()
+E       state.check_non_propagation()
+E       state.check_retry_after_rollback()
+E       state.check_retry_coherence()
+E       state.run_cycle(user_input='')
+E       state.check_checkpoint_coherence()
+E       state.check_integrity()
+E       state.check_non_propagation()
+E       state.check_retry_after_rollback()
+E       state.teardown()
+
+tests/test_compiler_state_machine.py:163: AssertionError
+______________________ test_thought_loop_generates_output ______________________
+
+    @pytest.mark.asyncio
+    async def test_thought_loop_generates_output():
+        """
+        Submit input → run cognitive cycle → produce thought events →
+        persist identity context → dashboard receives non-empty stream
+        """
+        from synap_server import app
+        from loop.recursion import RecursionEngine
+        from core.state import ProcessingState
+    
+        # 1. Create test context
+        engine = RecursionEngine(max_depth=5)
+    
+        # 2. Submit input
+        state = ProcessingState(raw_input="What is consciousness?")
+    
+        # 3. Run cognitive cycle
+        result = engine.recurse(state)
+    
+        # 4. Verify thought/state events produced
+        assert result is not None
+        assert result.raw_input == "What is consciousness?"
+        assert result.recursion_depth >= 1
+        assert result.convergence_reason == "converged"
+    
+        # 5. Verify identity/self-model context
+        assert hasattr(result, 'confidence_score')
+        assert hasattr(result, 'state_history')
+    
+        # 6. Verify non-empty output
+>       assert result.processed_output is not None or len(result.state_history) > 0
+E       AssertionError: assert (None is not None or 0 > 0)
+E        +  where None = ProcessingState(raw_input='What is consciousness?', context={'previous_feedback': -0.43, 'feedback_coefficient': 0.12000000000000002, 'noise_injection': 0.1305125983634302, 'feedback_adjustment': -0.005160000000000001}, timestamp='2026-07-15T15:05:07.409174', pipeline_stages=('ConsciousnessProcessor', 'ConsciousnessProcessor'), noise_filtered=True, input_normalized=True, snr_boost=0.25, patterns_generated=True, solution_space_explored=False, novelty_coefficient=0.42, coherence_maintained=True, stability_coefficient=0.85, invalid_patterns_removed=True, bias_reduction=0.3, processed_output=None, confidence_score=0.0, recursion_depth=2, convergence_reason='converged', feedback_history=[], state_history=[], timed_out=False).processed_output
+E        +  and   0 = len([])
+E        +    where [] = ProcessingState(raw_input='What is consciousness?', context={'previous_feedback': -0.43, 'feedback_coefficient': 0.12000000000000002, 'noise_injection': 0.1305125983634302, 'feedback_adjustment': -0.005160000000000001}, timestamp='2026-07-15T15:05:07.409174', pipeline_stages=('ConsciousnessProcessor', 'ConsciousnessProcessor'), noise_filtered=True, input_normalized=True, snr_boost=0.25, patterns_generated=True, solution_space_explored=False, novelty_coefficient=0.42, coherence_maintained=True, stability_coefficient=0.85, invalid_patterns_removed=True, bias_reduction=0.3, processed_output=None, confidence_score=0.0, recursion_depth=2, convergence_reason='converged', feedback_history=[], state_history=[], timed_out=False).state_history
+
+tests/test_e2e_thought_loop.py:43: AssertionError
+----------------------------- Captured stderr call -----------------------------
+2026-07-15 15:05:07,409 - loop.recursion - INFO - RecursionEngine initialized: max_depth=5, alpha=0.80, noise=0.10, timeout=30s
+2026-07-15 15:05:07,409 - loop.recursion - INFO - Recursion depth: 1/5
+2026-07-15 15:05:07,409 - loop.recursion - INFO - Recursion depth: 2/5
+2026-07-15 15:05:07,409 - loop.recursion - INFO - ✓ Converged at depth 2
+------------------------------ Captured log call -------------------------------
+INFO     loop.recursion:recursion.py:144 RecursionEngine initialized: max_depth=5, alpha=0.80, noise=0.10, timeout=30s
+INFO     loop.recursion:recursion.py:213 Recursion depth: 1/5
+INFO     loop.recursion:recursion.py:213 Recursion depth: 2/5
+INFO     loop.recursion:recursion.py:222 ✓ Converged at depth 2
+____________________ test_dashboard_stream_receives_events _____________________
+
+    @pytest.mark.asyncio
+    async def test_dashboard_stream_receives_events():
+        """
+        Test that the dashboard WebSocket receives thought loop events.
+        """
+>       from websocket_manager import WebSocketManager
+E         File "/home/aaron/Synap-Forge/.consciousness_engine/websocket_manager.py", line 93
+E           await websocket.accept()
+E           ^^^^^^^^^^^^^^^^^^^^^^^^
+E       SyntaxError: 'await' outside function
+
+tests/test_e2e_thought_loop.py:57: SyntaxError
+=============================== warnings summary ===============================
+../../.local/lib/python3.10/site-packages/opentelemetry/util/_importlib_metadata.py:32
+  /home/aaron/.local/lib/python3.10/site-packages/opentelemetry/util/_importlib_metadata.py:32: DeprecationWarning: SelectableGroups dict interface is deprecated. Use select.
+    return EntryPoints(ep for group_eps in eps.values() for ep in group_eps)
+
+synap_server.py:1424
+  /home/aaron/Synap-Forge/.consciousness_engine/synap_server.py:1424: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    @app.on_event("startup")
+
+../../.local/lib/python3.10/site-packages/fastapi/applications.py:4656
+../../.local/lib/python3.10/site-packages/fastapi/applications.py:4656
+  /home/aaron/.local/lib/python3.10/site-packages/fastapi/applications.py:4656: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    return self.router.on_event(event_type)  # ty: ignore[deprecated]
+
+synap_server.py:1429
+  /home/aaron/Synap-Forge/.consciousness_engine/synap_server.py:1429: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    @app.on_event("shutdown")
+
+tests/test_runner.py:14
+  /home/aaron/Synap-Forge/.consciousness_engine/tests/test_runner.py:14: PytestCollectionWarning: cannot collect test class 'TestResult' because it has a __init__ constructor (from: tests/test_runner.py)
+    class TestResult:
+
+tests/test_runner.py:21
+  /home/aaron/Synap-Forge/.consciousness_engine/tests/test_runner.py:21: PytestCollectionWarning: cannot collect test class 'TestRunner' because it has a __init__ constructor (from: tests/test_runner.py)
+    class TestRunner:
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_compiler.py::test_compiler_retry_on_empty - TypeError: cann...
+FAILED tests/test_compiler_state_machine.py::TestCompilerStateMachine::runTest
+FAILED tests/test_e2e_thought_loop.py::test_thought_loop_generates_output - A...
+FAILED tests/test_e2e_thought_loop.py::test_dashboard_stream_receives_events
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 4 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+=================== 4 failed, 6 passed, 7 warnings in 0.54s ====================

@@ -1,0 +1,31 @@
+{
+  "errors": {
+    "1c964594d0ab114381d5c3a9f2b2a4be": {
+      "message": "Build failed: namespace not specified",
+      "timestamp": "2026-07-16T22:56:21.394452",
+      "action": "inject_code",
+      "params": {
+        "strategy": "overwrite"
+      },
+      "success": true
+    }
+  },
+  "fixes": {},
+  "patterns": {
+    "inject_code:7ef52bf2c386fc29fd62d36b604aac39": {
+      "action": "inject_code",
+      "params": {
+        "strategy": "overwrite"
+      },
+      "success_count": 1,
+      "failure_count": 0,
+      "last_used": "2026-07-16T22:56:21.394469"
+    }
+  },
+  "stats": {
+    "total_errors": 1,
+    "total_fixes": 1,
+    "success_rate": 1.0,
+    "last_updated": "2026-07-16T22:56:21.394460"
+  }
+}

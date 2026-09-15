@@ -1,0 +1,179 @@
+<!-- ============================================================ -->
+<!-- EMOTION CONTROL PANEL - Add to your index.html               -->
+<!-- ============================================================ -->
+
+<div id="emotionPanel" style="
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 20px;
+    margin: 16px 0;
+    backdrop-filter: blur(10px);
+">
+    <h3 style="color: var(--neon-mint); font-size: 14px; margin-bottom: 12px;">
+        🎭 EMOTION CONTROL
+    </h3>
+    
+    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+        <button class="emotion-btn" data-emotion="neutral" style="
+            padding: 8px 16px;
+            border: 2px solid var(--glass-border);
+            border-radius: 20px;
+            background: rgba(17,34,64,0.5);
+            color: var(--text-primary);
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s;
+        ">🟤 Neutral</button>
+        
+        <button class="emotion-btn" data-emotion="anger" style="
+            padding: 8px 16px;
+            border: 2px solid var(--glass-border);
+            border-radius: 20px;
+            background: rgba(17,34,64,0.5);
+            color: var(--text-primary);
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s;
+        ">🔴 Anger</button>
+        
+        <button class="emotion-btn" data-emotion="sadness" style="
+            padding: 8px 16px;
+            border: 2px solid var(--glass-border);
+            border-radius: 20px;
+            background: rgba(17,34,64,0.5);
+            color: var(--text-primary);
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s;
+        ">🔵 Sadness</button>
+        
+        <button class="emotion-btn" data-emotion="dismissal" style="
+            padding: 8px 16px;
+            border: 2px solid var(--glass-border);
+            border-radius: 20px;
+            background: rgba(17,34,64,0.5);
+            color: var(--text-primary);
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s;
+        ">⚪ Dismissal</button>
+        
+        <button class="emotion-btn" data-emotion="mourning" style="
+            padding: 8px 16px;
+            border: 2px solid var(--glass-border);
+            border-radius: 20px;
+            background: rgba(17,34,64,0.5);
+            color: var(--text-primary);
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s;
+        ">⚫ Mourning</button>
+        
+        <button class="emotion-btn" data-emotion="joy" style="
+            padding: 8px 16px;
+            border: 2px solid var(--glass-border);
+            border-radius: 20px;
+            background: rgba(17,34,64,0.5);
+            color: var(--text-primary);
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s;
+        ">💛 Joy</button>
+        
+        <button class="emotion-btn" data-emotion="excitement" style="
+            padding: 8px 16px;
+            border: 2px solid var(--glass-border);
+            border-radius: 20px;
+            background: rgba(17,34,64,0.5);
+            color: var(--text-primary);
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s;
+        ">✨ Excitement</button>
+    </div>
+    
+    <div style="margin-top: 12px; display: flex; gap: 12px; align-items: center;">
+        <span style="color: var(--text-secondary); font-size: 12px;">Current emotion:</span>
+        <span id="currentEmotion" style="color: var(--neon-mint); font-weight: bold; font-size: 14px;">neutral</span>
+        <span id="emotionFrames" style="color: var(--text-secondary); font-size: 12px; margin-left: auto;"></span>
+    </div>
+</div>
+
+<script>
+// ================================================================
+// EMOTION CONTROL - WebSocket Integration
+// ================================================================
+
+let currentEmotion = 'neutral';
+let emotionFrameCount = 0;
+
+// Emotion button click handler
+document.querySelectorAll('.emotion-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const emotion = this.dataset.emotion;
+        currentEmotion = emotion;
+        document.getElementById('currentEmotion').textContent = emotion;
+        
+        // Update button styles
+        document.querySelectorAll('.emotion-btn').forEach(b => {
+            b.style.borderColor = 'var(--glass-border)';
+            b.style.background = 'rgba(17,34,64,0.5)';
+        });
+        this.style.borderColor = 'var(--neon-mint)';
+        this.style.background = 'rgba(100,255,218,0.15)';
+        
+        // Update the message input placeholder
+        const msgInput = document.querySelector('#messageInput');
+        if (msgInput) {
+            msgInput.placeholder = `Send a message with ${emotion} emotion...`;
+        }
+    });
+});
+
+// Override sendMessage to include emotion
+const originalSend = window.sendMessage || function() {};
+window.sendMessage = function() {
+    const input = document.getElementById('messageInput');
+    if (!input || !input.value.trim()) return;
+    
+    const text = input.value.trim();
+    const emotion = currentEmotion || 'neutral';
+    
+    // Send via WebSocket with emotion
+    if (window.ws && window.ws.readyState === WebSocket.OPEN) {
+        emotionFrameCount = 0;
+        document.getElementById('emotionFrames').textContent = '🎙️ streaming...';
+        
+        ws.send(JSON.stringify({
+            type: 'chat_audio',
+            input: text,
+            emotion: emotion
+        }));
+        
+        input.value = '';
+    } else {
+        console.warn('WebSocket not connected');
+    }
+};
+
+// Override audio frame handler to count frames
+const originalAudioHandler = window.onAudioFrame || function() {};
+window.onAudioFrame = function(data) {
+    if (data && data.type === 'audio_frame') {
+        emotionFrameCount++;
+        if (emotionFrameCount % 10 === 0) {
+            document.getElementById('emotionFrames').textContent = 
+                `🎵 ${emotionFrameCount} frames`;
+        }
+    }
+};
+
+// When audio_done is received
+window.onAudioDone = function() {
+    document.getElementById('emotionFrames').textContent = 
+        `✅ ${emotionFrameCount} frames`;
+};
+
+console.log('🎭 Emotion control panel loaded');
+</script>

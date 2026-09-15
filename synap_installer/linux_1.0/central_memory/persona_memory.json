@@ -1,0 +1,610 @@
+{
+  "temperature_baseline": 0.7999999999999998,
+  "empathy_coefficient": 0.13333333333333333,
+  "chaos_factor": 0.25,
+  "last_evolution": "2026-07-07T01:01:37.874553",
+  "evolution_log": [
+    {
+      "timestamp": "2026-07-01T01:46:53.596725",
+      "learnings": [
+        {
+          "lesson": "High arousal states (graffiti mode) triggered by: PIZZA!? fuck YES!",
+          "weight": 0.8333299906163659,
+          "timestamp": "2026-07-01T01:46:53.538732"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.49999799436981957,
+          "timestamp": "2026-07-01T01:46:53.538732"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.33333199624654636,
+          "timestamp": "2026-07-01T01:46:53.538732"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-01T01:47:10.305775",
+      "learnings": [
+        {
+          "lesson": "High arousal states (graffiti mode) triggered by: PIZZA!? fuck YES!",
+          "weight": 0.8333299906163659,
+          "timestamp": "2026-07-01T01:47:10.239259"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.49999799436981957,
+          "timestamp": "2026-07-01T01:47:10.239259"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.33333199624654636,
+          "timestamp": "2026-07-01T01:47:10.239259"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-01T01:47:26.270686",
+      "learnings": [
+        {
+          "lesson": "High arousal states (graffiti mode) triggered by: PIZZA!? fuck YES!",
+          "weight": 0.8333299906163659,
+          "timestamp": "2026-07-01T01:47:26.201952"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.49999799436981957,
+          "timestamp": "2026-07-01T01:47:26.201952"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.33333199624654636,
+          "timestamp": "2026-07-01T01:47:26.201952"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-01T01:47:42.019031",
+      "learnings": [
+        {
+          "lesson": "High arousal states (graffiti mode) triggered by: PIZZA!? fuck YES!",
+          "weight": 0.8333299906163659,
+          "timestamp": "2026-07-01T01:47:41.959029"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.49999799436981957,
+          "timestamp": "2026-07-01T01:47:41.959029"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.33333199624654636,
+          "timestamp": "2026-07-01T01:47:41.959029"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-01T01:58:48.321088",
+      "learnings": [
+        {
+          "lesson": "High arousal states (graffiti mode) triggered by: PIZZA!? fuck YES!",
+          "weight": 0.8333299906163659,
+          "timestamp": "2026-07-01T01:58:48.249289"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.49999799436981957,
+          "timestamp": "2026-07-01T01:58:48.249289"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.33333199624654636,
+          "timestamp": "2026-07-01T01:58:48.249289"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-01T01:59:58.586650",
+      "learnings": [
+        {
+          "lesson": "High arousal states (graffiti mode) triggered by: PIZZA!? fuck YES!",
+          "weight": 0.8333299906163659,
+          "timestamp": "2026-07-01T01:59:58.522750"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.49999799436981957,
+          "timestamp": "2026-07-01T01:59:58.522750"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.33333199624654636,
+          "timestamp": "2026-07-01T01:59:58.522750"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-01T02:02:30.306554",
+      "learnings": [
+        {
+          "lesson": "High arousal states (graffiti mode) triggered by: PIZZA!? fuck YES!",
+          "weight": 0.8333299906163659,
+          "timestamp": "2026-07-01T02:02:30.236690"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.49999799436981957,
+          "timestamp": "2026-07-01T02:02:30.236690"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.33333199624654636,
+          "timestamp": "2026-07-01T02:02:30.236690"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-01T02:06:34.108463",
+      "learnings": [
+        {
+          "lesson": "High arousal states (graffiti mode) triggered by: PIZZA!? fuck YES!",
+          "weight": 0.8333299906163659,
+          "timestamp": "2026-07-01T02:06:34.039060"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.49999799436981957,
+          "timestamp": "2026-07-01T02:06:34.039060"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.33333199624654636,
+          "timestamp": "2026-07-01T02:06:34.039060"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-01T02:08:06.168246",
+      "learnings": [
+        {
+          "lesson": "High arousal states (graffiti mode) triggered by: PIZZA!? fuck YES!",
+          "weight": 0.8333299906163659,
+          "timestamp": "2026-07-01T02:08:06.108541"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.49999799436981957,
+          "timestamp": "2026-07-01T02:08:06.108541"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.33333199624654636,
+          "timestamp": "2026-07-01T02:08:06.108541"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-01T02:08:06.234259",
+      "learnings": [
+        {
+          "lesson": "High arousal states (graffiti mode) triggered by: PIZZA!? fuck YES!",
+          "weight": 0.8333299906163659,
+          "timestamp": "2026-07-01T02:08:06.176618"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.49999799436981957,
+          "timestamp": "2026-07-01T02:08:06.176618"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.33333199624654636,
+          "timestamp": "2026-07-01T02:08:06.176618"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-01T02:12:45.023282",
+      "learnings": [
+        {
+          "lesson": "High arousal states (graffiti mode) triggered by: PIZZA!? fuck YES!",
+          "weight": 0.8333299906163659,
+          "timestamp": "2026-07-01T02:12:44.959096"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.49999799436981957,
+          "timestamp": "2026-07-01T02:12:44.959096"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.33333199624654636,
+          "timestamp": "2026-07-01T02:12:44.959096"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-01T02:12:45.086368",
+      "learnings": [
+        {
+          "lesson": "High arousal states (graffiti mode) triggered by: PIZZA!? fuck YES!",
+          "weight": 0.8333299906163659,
+          "timestamp": "2026-07-01T02:12:45.030843"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.49999799436981957,
+          "timestamp": "2026-07-01T02:12:45.030843"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.33333199624654636,
+          "timestamp": "2026-07-01T02:12:45.030843"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-01T02:15:41.159496",
+      "learnings": [
+        {
+          "lesson": "High arousal states (graffiti mode) triggered by: PIZZA!? fuck YES!",
+          "weight": 0.8333299906163659,
+          "timestamp": "2026-07-01T02:15:41.090690"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.49999799436981957,
+          "timestamp": "2026-07-01T02:15:41.090690"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.33333199624654636,
+          "timestamp": "2026-07-01T02:15:41.090690"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-01T02:17:01.112666",
+      "learnings": [
+        {
+          "lesson": "High arousal states (graffiti mode) triggered by: PIZZA!? fuck YES!",
+          "weight": 0.8333299906163659,
+          "timestamp": "2026-07-01T02:17:01.043326"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.49999799436981957,
+          "timestamp": "2026-07-01T02:17:01.043326"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.33333199624654636,
+          "timestamp": "2026-07-01T02:17:01.043326"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-01T02:17:01.190872",
+      "learnings": [
+        {
+          "lesson": "High arousal states (graffiti mode) triggered by: PIZZA!? fuck YES!",
+          "weight": 0.8333299906163659,
+          "timestamp": "2026-07-01T02:17:01.122471"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.49999799436981957,
+          "timestamp": "2026-07-01T02:17:01.122471"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.33333199624654636,
+          "timestamp": "2026-07-01T02:17:01.122471"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-02T01:14:34.706646",
+      "learnings": [
+        {
+          "lesson": "High arousal states (graffiti mode) triggered by: PIZZA!? fuck YES!",
+          "weight": 0.8333299906163659,
+          "timestamp": "2026-07-02T01:14:34.610947"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.49999799436981957,
+          "timestamp": "2026-07-02T01:14:34.610947"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.33333199624654636,
+          "timestamp": "2026-07-02T01:14:34.610947"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-03T01:02:19.847558",
+      "learnings": [
+        {
+          "lesson": "High arousal states (graffiti mode) triggered by: PIZZA!? fuck YES!",
+          "weight": 0.8333299906163659,
+          "timestamp": "2026-07-03T01:02:19.772306"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.49999799436981957,
+          "timestamp": "2026-07-03T01:02:19.772306"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.33333199624654636,
+          "timestamp": "2026-07-03T01:02:19.772306"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-03T01:02:19.921209",
+      "learnings": [
+        {
+          "lesson": "High arousal states (graffiti mode) triggered by: PIZZA!? fuck YES!",
+          "weight": 0.8333299906163659,
+          "timestamp": "2026-07-03T01:02:19.856746"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.49999799436981957,
+          "timestamp": "2026-07-03T01:02:19.856746"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.33333199624654636,
+          "timestamp": "2026-07-03T01:02:19.856746"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-03T03:47:50.549808",
+      "learnings": [
+        {
+          "lesson": "High arousal states (graffiti mode) triggered by: PIZZA!? fuck YES!",
+          "weight": 0.8333299906163659,
+          "timestamp": "2026-07-03T03:47:50.484204"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.49999799436981957,
+          "timestamp": "2026-07-03T03:47:50.484204"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.33333199624654636,
+          "timestamp": "2026-07-03T03:47:50.484204"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-03T04:07:50.626445",
+      "learnings": [
+        {
+          "lesson": "High arousal states (graffiti mode) triggered by: PIZZA!? fuck YES!",
+          "weight": 0.8333299906163659,
+          "timestamp": "2026-07-03T04:07:50.566251"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.49999799436981957,
+          "timestamp": "2026-07-03T04:07:50.566251"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.33333199624654636,
+          "timestamp": "2026-07-03T04:07:50.566251"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-03T04:14:24.283631",
+      "learnings": [
+        {
+          "lesson": "High arousal states (graffiti mode) triggered by: PIZZA!? fuck YES!",
+          "weight": 0.8333299906163659,
+          "timestamp": "2026-07-03T04:14:24.223371"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.49999799436981957,
+          "timestamp": "2026-07-03T04:14:24.223371"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.33333199624654636,
+          "timestamp": "2026-07-03T04:14:24.223371"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-03T04:19:24.364615",
+      "learnings": [
+        {
+          "lesson": "High arousal states (graffiti mode) triggered by: PIZZA!? fuck YES!",
+          "weight": 0.8333299906163659,
+          "timestamp": "2026-07-03T04:19:24.297363"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.49999799436981957,
+          "timestamp": "2026-07-03T04:19:24.297363"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.33333199624654636,
+          "timestamp": "2026-07-03T04:19:24.297363"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-03T04:51:58.612148",
+      "learnings": [
+        {
+          "lesson": "High arousal states (graffiti mode) triggered by: PIZZA!? fuck YES!",
+          "weight": 0.8333299906163659,
+          "timestamp": "2026-07-03T04:51:58.541157"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.49999799436981957,
+          "timestamp": "2026-07-03T04:51:58.541157"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.33333199624654636,
+          "timestamp": "2026-07-03T04:51:58.541157"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-03T04:51:58.690039",
+      "learnings": [
+        {
+          "lesson": "High arousal states (graffiti mode) triggered by: PIZZA!? fuck YES!",
+          "weight": 0.8333299906163659,
+          "timestamp": "2026-07-03T04:51:58.619138"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.49999799436981957,
+          "timestamp": "2026-07-03T04:51:58.619138"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.33333199624654636,
+          "timestamp": "2026-07-03T04:51:58.619138"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-04T01:00:54.725268",
+      "learnings": [
+        {
+          "lesson": "High arousal states (graffiti mode) triggered by: PIZZA!? fuck YES!",
+          "weight": 0.8333299906163659,
+          "timestamp": "2026-07-04T01:00:54.644981"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.49999799436981957,
+          "timestamp": "2026-07-04T01:00:54.644981"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.33333199624654636,
+          "timestamp": "2026-07-04T01:00:54.644981"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-04T01:05:54.760017",
+      "learnings": [
+        {
+          "lesson": "High arousal states (graffiti mode) triggered by: PIZZA!? fuck YES!",
+          "weight": 0.8333299906163659,
+          "timestamp": "2026-07-04T01:05:54.687907"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.49999799436981957,
+          "timestamp": "2026-07-04T01:05:54.687907"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.33333199624654636,
+          "timestamp": "2026-07-04T01:05:54.687907"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-05T01:01:37.665576",
+      "learnings": [
+        {
+          "lesson": "High arousal states (graffiti mode) triggered by: PIZZA!? fuck YES!",
+          "weight": 0.8333299906163659,
+          "timestamp": "2026-07-05T01:01:37.582656"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.49999799436981957,
+          "timestamp": "2026-07-05T01:01:37.582656"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.33333199624654636,
+          "timestamp": "2026-07-05T01:01:37.582656"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-05T01:21:37.725084",
+      "learnings": [
+        {
+          "lesson": "High arousal states (graffiti mode) triggered by: PIZZA!? fuck YES!",
+          "weight": 0.8333299906163659,
+          "timestamp": "2026-07-05T01:21:37.660761"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.49999799436981957,
+          "timestamp": "2026-07-05T01:21:37.660761"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.33333199624654636,
+          "timestamp": "2026-07-05T01:21:37.660761"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-06T01:01:37.777525",
+      "learnings": [
+        {
+          "lesson": "High arousal states (graffiti mode) triggered by: PIZZA!? fuck YES!",
+          "weight": 0.8333299906163659,
+          "timestamp": "2026-07-06T01:01:37.678570"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.49999799436981957,
+          "timestamp": "2026-07-06T01:01:37.678570"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.33333199624654636,
+          "timestamp": "2026-07-06T01:01:37.678570"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-07-07T01:01:37.874553",
+      "learnings": [
+        {
+          "lesson": "High arousal states (graffiti mode) triggered by: PIZZA!? fuck YES!",
+          "weight": 0.8333299906163659,
+          "timestamp": "2026-07-07T01:01:37.788169"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.49999799436981957,
+          "timestamp": "2026-07-07T01:01:37.788169"
+        },
+        {
+          "lesson": "Avoid topics that triggered negative valence shift",
+          "weight": 0.33333199624654636,
+          "timestamp": "2026-07-07T01:01:37.788169"
+        }
+      ]
+    }
+  ],
+  "gender_lock": true,
+  "identity": "Meena"
+}

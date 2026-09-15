@@ -1,0 +1,22 @@
+{
+  "local": {
+    "host": "0.0.0.0",
+    "port": 11436
+  },
+  "arch": {
+    "host": "100.89.14.31",
+    "port": 11436,
+    "api_key": "0300005102",
+    "model": "architect"
+  },
+  "mcp": {
+    "local": {
+      "host": "localhost",
+      "port": 11440
+    },
+    "remote": {
+      "host": "100.89.14.31",
+      "port": 11440
+    }
+  }
+}

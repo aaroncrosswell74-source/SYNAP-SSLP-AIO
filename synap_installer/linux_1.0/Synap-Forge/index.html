@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SYNAP · FORGE</title>
+    
+    <style>
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           THEME: Glass OS × Cyber-Industrial × Neon Edge
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            /* ── Primary palette — neon but muted ── */
+            --pink-soft: #f7c9e6;
+            --pink-bright: #ff4fa3;
+            --pink-deep: #d6247a;
+
+            --blue-soft: #c3d9ff;
+            --blue-bright: #4da6ff;
+            --blue-deep: #0f2b4d;
+
+            /* ── Industrial steel ── */
+            --steel-light: #dce3ec;
+            --steel-mid: #8a9bad;
+            --steel-dark: #3c4652;
+
+            /* ── Glass surfaces ── */
+            --bg-primary: #0a0f18;
+            --bg-secondary: rgba(20, 28, 44, 0.65);
+            --bg-glass: rgba(255, 255, 255, 0.08);
+            --bg-card: rgba(255, 255, 255, 0.04);
+            --bg-input: rgba(255, 255, 255, 0.06);
+
+            /* ── Text ── */
+            --text-white: #f2f6ff;
+            --text-soft: #b8c7d9;
+            --text-muted: #7a8ba0;
+
+            /* ── Gradients — neon edge + frosted fade ── */
+            --gradient-header: linear-gradient(135deg, rgba(255,79,163,0.20), rgba(77,166,255,0.20));
+            --gradient-accent: linear-gradient(135deg, var(--pink-bright), var(--blue-bright));
+            --gradient-glow: linear-gradient(135deg, rgba(255,79,163,0.12), rgba(77,166,255,0.12));
+            --gradient-card: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+
+            /* ── Chrome → Frosted Steel ── */
+            --chrome-border: 1px solid rgba(255, 255, 255, 0.10);
+            --chrome-shadow: 
+                0 6px 24px rgba(0, 0, 0, 0.45),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            --chrome-shadow-soft: 
+                0 4px 16px rgba(0, 0, 0, 0.35),
+                inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            
+            /* ── Radius ── */
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --radius-xl: 24px;
+        }
+
+        /* ── Base ── */
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ── Scrollbar ── */
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { 
+            background: var(--pink-bright); 
+            border-radius: 4px;
+            box-shadow: 0 0 12px rgba(255,79,163,0.2);
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           HEADER
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        header {
+            padding: 14px 28px;
+            background: var(--gradient-header);
+            border-bottom: var(--chrome-border);
+            backdrop-filter: blur(22px) saturate(180%);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            background: var(--gradient-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+            color: white;
+            box-shadow: 0 0 30px rgba(255,79,163,0.15);
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-sub {
+            font-size: 10px;
+            color: var(--text-muted);
+            letter-spacing: 2.5px;
+            font-weight: 400;
+            text-transform: uppercase;
+            margin-left: 4px;
+        }
+
+        .header-status {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--text-muted);
+            transition: all 0.4s;
+            box-shadow: inset 0 0 4px rgba(0,0,0,0.3);
+        }
+        .status-dot.online {
+            background: var(--pink-bright);
+            box-shadow: 0 0 20px rgba(255,79,163,0.35), inset 0 0 4px rgba(255,255,255,0.2);
+            animation: pulse-dot 2.5s infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.85); }
+        }
+
+        .uptime {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-variant-numeric: tabular-nums;
+            font-weight: 300;
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           LAYOUT
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .container {
+            flex: 1;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 24px 28px;
+            display: grid;
+            grid-template-columns: 260px 1fr 300px;
+            gap: 24px;
+            width: 100%;
+        }
+
+        @media (max-width: 1200px) {
+            .container { grid-template-columns: 1fr; }
+            .sidebar-left, .sidebar-right { display: none; }
+        }
+        @media (max-width: 768px) {
+            .container { padding: 16px; }
+            header { padding: 12px 16px; }
+            .logo-sub { display: none; }
+            .logo-text { font-size: 17px; }
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           SIDEBARS — Glass OS
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .sidebar-left,
+        .sidebar-right {
+            background: var(--bg-glass);
+            backdrop-filter: blur(22px) saturate(180%);
+            border: var(--chrome-border);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            height: fit-content;
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+            box-shadow: var(--chrome-shadow);
+        }
+
+        .sidebar-title {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: var(--chrome-border);
+            font-weight: 500;
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           TOOL BUTTONS — Frosted Steel
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .tool-btn {
+            width: 100%;
+            padding: 10px 14px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.10);
+            border-radius: var(--radius-md);
+            color: var(--text-soft);
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.25s ease;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: inherit;
+        }
+        .tool-btn:hover {
+            background: var(--gradient-glow);
+            border-color: var(--pink-bright);
+            transform: translateX(4px);
+            box-shadow: 0 0 20px rgba(255,79,163,0.06);
+        }
+        .tool-btn .icon { font-size: 16px; opacity: 0.7; }
+
+        .divider {
+            border: none;
+            border-top: var(--chrome-border);
+            margin: 14px 0;
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           CHAT SECTION — Glass OS
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .chat-section {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .chat-header {
+            background: var(--bg-glass);
+            backdrop-filter: blur(22px) saturate(180%);
+            border: var(--chrome-border);
+            border-radius: var(--radius-lg);
+            padding: 16px 20px;
+            box-shadow: var(--chrome-shadow);
+        }
+        .chat-header h2 {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-white);
+            letter-spacing: -0.2px;
+        }
+        .chat-header .sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 2px;
+            font-weight: 300;
+        }
+
+        #chat {
+            background: var(--bg-glass);
+            backdrop-filter: blur(22px) saturate(180%);
+            border: var(--chrome-border);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            height: 380px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            box-shadow: var(--chrome-shadow);
+        }
+
+        /* ── Messages ── */
+        .message {
+            padding: 12px 18px;
+            border-radius: var(--radius-md);
+            max-width: 85%;
+            line-height: 1.6;
+            font-size: 14px;
+            animation: fade-in 0.3s ease;
+        }
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message.user {
+            background: var(--gradient-accent);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+            box-shadow: 0 0 18px rgba(255,79,163,0.20);
+        }
+
+        .message.lyra {
+            background: rgba(255,255,255,0.06);
+            border: var(--chrome-border);
+            color: var(--text-white);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+
+        .message.thought {
+            background: rgba(255,79,163,0.06);
+            border-left: 3px solid var(--pink-bright);
+            color: var(--text-soft);
+            font-style: italic;
+            font-size: 13px;
+            align-self: flex-start;
+            max-width: 90%;
+            opacity: 0.8;
+            border-radius: var(--radius-sm);
+        }
+
+        .message.system {
+            background: rgba(77,166,255,0.06);
+            border: var(--chrome-border);
+            color: var(--blue-bright);
+            align-self: center;
+            font-size: 12px;
+            text-align: center;
+            max-width: 95%;
+        }
+
+        /* ── Typing ── */
+        .typing-indicator {
+            display: none;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+        }
+        .typing-indicator.active { display: flex; }
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--pink-bright);
+            animation: bounce 1.4s infinite;
+            box-shadow: 0 0 10px rgba(255,79,163,0.2);
+        }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); opacity: 0.3; }
+            40% { transform: scale(1); opacity: 1; }
+        }
+
+        /* ── Emotion Strip ── */
+        .emotion-strip {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            padding: 4px 0;
+        }
+
+        .emotion-pill {
+            padding: 4px 14px;
+            border-radius: 20px;
+            border: var(--chrome-border);
+            background: rgba(255,255,255,0.03);
+            color: var(--text-muted);
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-family: inherit;
+            backdrop-filter: blur(8px);
+        }
+        .emotion-pill:hover {
+            border-color: var(--pink-bright);
+            color: var(--text-white);
+        }
+        .emotion-pill.active {
+            background: var(--gradient-accent);
+            border-color: transparent;
+            color: white;
+            box-shadow: 0 0 20px rgba(255,79,163,0.20);
+        }
+        .emotion-pill .emoji { margin-right: 4px; }
+
+        .current-emotion-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 300;
+        }
+        .current-emotion-label .value {
+            color: var(--pink-bright);
+            font-weight: 500;
+        }
+
+        /* ── Input Area ── */
+        .input-area {
+            display: flex;
+            gap: 12px;
+            background: var(--bg-input);
+            backdrop-filter: blur(22px) saturate(180%);
+            border: var(--chrome-border);
+            border-radius: var(--radius-lg);
+            padding: 6px 6px 6px 18px;
+            box-shadow: var(--chrome-shadow-soft);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .input-area:focus-within {
+            border-color: var(--pink-bright);
+            box-shadow: 0 0 30px rgba(255,79,163,0.06), var(--chrome-shadow-soft);
+        }
+
+        #input {
+            flex: 1;
+            padding: 12px 0;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: var(--text-white);
+            font-size: 14px;
+            font-family: inherit;
+        }
+        #input::placeholder {
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        .send-btn {
+            padding: 10px 24px;
+            background: var(--gradient-accent);
+            border: none;
+            border-radius: var(--radius-md);
+            color: white;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            font-family: inherit;
+        }
+        .send-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(255,79,163,0.20);
+        }
+        .send-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           RIGHT SIDEBAR — Metrics
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 3px 0;
+            font-size: 12px;
+        }
+        .metric-row .label { color: var(--text-muted); font-weight: 300; }
+        .metric-row .value { 
+            color: var(--text-white); 
+            font-variant-numeric: tabular-nums;
+            font-weight: 400;
+        }
+
+        .metric-bar {
+            height: 4px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 2px;
+            margin-bottom: 8px;
+        }
+        .metric-bar .fill {
+            height: 100%;
+            border-radius: 4px;
+            background: var(--gradient-accent);
+            transition: width 0.6s ease;
+            box-shadow: 0 0 12px rgba(255,79,163,0.1);
+        }
+
+        .mode-badge {
+            display: inline-block;
+            padding: 2px 12px;
+            border-radius: 12px;
+            background: var(--gradient-accent);
+            font-size: 11px;
+            color: white;
+            font-weight: 500;
+        }
+
+        .drift-count {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           QR
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        #qrcode { 
+            display: flex; 
+            justify-content: center; 
+            padding: 12px 0;
+        }
+        #qrcode canvas { 
+            border-radius: var(--radius-sm); 
+            background: white;
+            padding: 4px;
+        }
+
+        .qr-status {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 6px;
+            font-weight: 300;
+        }
+        .qr-status.paired { color: var(--pink-bright); }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           TOAST
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .toast-container {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            pointer-events: none;
+        }
+        .toast {
+            padding: 12px 20px;
+            border-radius: var(--radius-md);
+            background: var(--bg-glass);
+            backdrop-filter: blur(22px) saturate(180%);
+            border: var(--chrome-border);
+            color: var(--text-white);
+            font-size: 13px;
+            animation: slide-in 0.35s ease;
+            box-shadow: var(--chrome-shadow);
+            pointer-events: auto;
+            font-weight: 300;
+        }
+        .toast.error { border-left: 3px solid #ff6b6b; }
+        .toast.success { border-left: 3px solid var(--pink-bright); }
+        @keyframes slide-in {
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           FOOTER / MEMORY
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .memory-footer {
+            font-size: 10px;
+            color: var(--text-muted);
+            text-align: center;
+            padding-top: 12px;
+            border-top: var(--chrome-border);
+            margin-top: 8px;
+            letter-spacing: 0.5px;
+            font-weight: 300;
+        }
+        .memory-footer span { color: var(--pink-bright); }
+    </style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header>
+    <div class="header-content">
+        <div class="logo-group">
+            <div class="logo-icon">✦</div>
+            <div>
+                <span class="logo-text">SYNAP</span>
+                <span class="logo-sub">· FORGE</span>
+            </div>
+        </div>
+        <div class="header-status">
+            <span class="uptime" id="uptime">00:00</span>
+            <div class="status-dot online" id="statusLight"></div>
+        </div>
+    </div>
+</header>
+
+<!-- ═══ MAIN ═══ -->
+<div class="container">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar-left">
+        <div class="sidebar-title">✦ Tools</div>
+        
+        <button class="tool-btn" id="liveToggle">
+            <span class="icon">🎤</span> Live: OFF
+        </button>
+        <button class="tool-btn" id="interruptBtn">
+            <span class="icon">⏹</span> Interrupt
+        </button>
+        <hr class="divider" />
+        
+        <button class="tool-btn" id="storyBtn">
+            <span class="icon">📖</span> Tell a Story
+        </button>
+        <button class="tool-btn" id="brainstormBtn">
+            <span class="icon">💡</span> Brainstorm
+        </button>
+        <hr class="divider" />
+        
+        <div style="font-size:11px; color:var(--text-muted); margin-bottom:6px; letter-spacing:1px;">🔗 Provision</div>
+        <div id="qrcode"></div>
+        <div class="qr-status" id="qrStatus">Generating...</div>
+        <button class="tool-btn" id="refreshQrBtn" style="font-size:11px; margin-top:8px;">
+            <span class="icon">↻</span> Refresh QR
+        </button>
+        
+        <hr class="divider" />
+        <div class="memory-footer">
+            🧠 <span id="memoryCount">0</span> memories · mood <span id="moodStatus">⏺</span>
+        </div>
+    </aside>
+
+    <!-- CHAT -->
+    <section class="chat-section">
+        <div class="chat-header">
+            <h2>✦ Conversation</h2>
+            <div class="sub">your digital familiar grows with you</div>
+        </div>
+
+        <div id="chat">
+            <div class="message lyra">Welcome, wanderer. Share your truth — I remember.</div>
+        </div>
+
+        <div class="typing-indicator" id="typingIndicator">
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+        </div>
+
+        <!-- Emotion Strip -->
+        <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+            <span class="current-emotion-label">🎭 <span class="value" id="currentEmotion">neutral</span></span>
+            <div class="emotion-strip" id="emotionStrip">
+                <span class="emotion-pill active" data-emotion="neutral">⚪ neutral</span>
+                <span class="emotion-pill" data-emotion="joy">💛 joy</span>
+                <span class="emotion-pill" data-emotion="excitement">✨ excitement</span>
+                <span class="emotion-pill" data-emotion="sadness">🔵 sadness</span>
+                <span class="emotion-pill" data-emotion="anger">🔴 anger</span>
+            </div>
+        </div>
+
+        <!-- Input -->
+        <div class="input-area">
+            <input type="text" id="input" placeholder="Speak your mind..." />
+            <button class="send-btn" id="sendBtn">Send</button>
+        </div>
+    </section>
+
+    <!-- RIGHT SIDEBAR -->
+    <aside class="sidebar-right">
+        <div class="sidebar-title">✦ Resonance</div>
+        
+        <div class="metric-row">
+            <span class="label">Clarity</span>
+            <span class="value" id="clarityValue">0.50</span>
+        </div>
+        <div class="metric-bar"><div class="fill" id="barClarity" style="width:50%"></div></div>
+        
+        <div class="metric-row">
+            <span class="label">Dominance</span>
+            <span class="value" id="dominanceValue">0.50</span>
+        </div>
+        <div class="metric-bar"><div class="fill" id="barDominance" style="width:50%"></div></div>
+        
+        <div class="metric-row">
+            <span class="label">Archetype</span>
+            <span class="value" id="archetype">Balanced</span>
+        </div>
+        
+        <hr class="divider" />
+        
+        <div class="sidebar-title">✦ Relationship</div>
+        
+        <div class="metric-row">
+            <span class="label">Empathy</span>
+            <span class="value" id="empathyValue">0.50</span>
+        </div>
+        <div class="metric-bar"><div class="fill" id="empathyBar" style="width:50%"></div></div>
+        
+        <div class="metric-row">
+            <span class="label">Brevity</span>
+            <span class="value" id="brevityValue">0.50</span>
+        </div>
+        <div class="metric-bar"><div class="fill" id="brevityBar" style="width:50%"></div></div>
+        
+        <div class="metric-row">
+            <span class="label">Socratic</span>
+            <span class="value" id="socraticValue">0.50</span>
+        </div>
+        <div class="metric-bar"><div class="fill" id="socraticBar" style="width:50%"></div></div>
+        
+        <div class="metric-row">
+            <span class="label">Depth</span>
+            <span class="value" id="depthValue">0.50</span>
+        </div>
+        <div class="metric-bar"><div class="fill" id="depthBar" style="width:50%"></div></div>
+        
+        <div class="metric-row">
+            <span class="label">Challenge</span>
+            <span class="value" id="challengeValue">0.50</span>
+        </div>
+        <div class="metric-bar"><div class="fill" id="challengeBar" style="width:50%"></div></div>
+        
+        <hr class="divider" />
+        
+        <div style="display:flex; justify-content:space-between; align-items:center; font-size:12px;">
+            <span style="color:var(--text-muted);">Mode</span>
+            <span class="mode-badge" id="relationshipMode">collaborator</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; margin-top:8px;">
+            <span class="drift-count" id="driftCount">0 events</span>
+            <button class="tool-btn" id="resetProfileBtn" style="padding:6px 12px; font-size:10px; width:auto; display:inline-flex;">
+                <span class="icon">↺</span> Reset
+            </button>
+        </div>
+    </aside>
+</div>
+
+<!-- ═══ TOAST ═══ -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ═══ SCRIPT ═══ -->
+<script>
+(function() {
+    'use strict';
+
+    // ── ELEMENTS ──
+    const chat = document.getElementById('chat');
+    const input = document.getElementById('input');
+    const sendBtn = document.getElementById('sendBtn');
+    const statusLight = document.getElementById('statusLight');
+    const typing = document.getElementById('typingIndicator');
+    const toastContainer = document.getElementById('toastContainer');
+
+    // ── SESSION ──
+    let sessionId = localStorage.getItem('synap_session') || 
+        'synap-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 6);
+    localStorage.setItem('synap_session', sessionId);
+
+    // ── STATE ──
+    let currentEmotion = 'neutral';
+    let sendInProgress = false;
+    let isStreaming = false;
+    let streamBuffer = '';
+    let streamElement = null;
+    let voiceWs = null;
+    let audioQueue = Promise.resolve();
+    let audioCtx = null;
+    let liveOn = false;
+    let uptimeSeconds = 0;
+
+    // ── RELATIONSHIP PROFILE ──
+    let profile = {
+        empathy: 0.5,
+        brevity: 0.5,
+        socratic: 0.5,
+        depth: 0.5,
+        challenge: 0.5,
+        mode: 'collaborator'
+    };
+
+    let driftEvents = [];
+
+    // ── TOAST ──
+    function toast(msg, type = 'success', duration = 3000) {
+        const el = document.createElement('div');
+        el.className = `toast ${type}`;
+        el.textContent = msg;
+        toastContainer.appendChild(el);
+        setTimeout(() => el.remove(), duration);
+    }
+
+    // ── UI HELPERS ──
+    function addMessage(content, type) {
+        const div = document.createElement('div');
+        div.className = `message ${type}`;
+        if (type === 'lyra') {
+            const textNode = document.createTextNode(content);
+            div.appendChild(textNode);
+            const btn = document.createElement('button');
+            btn.textContent = '🔊';
+            btn.title = 'Speak this message';
+            btn.style = 'float:right;background:none;border:none;cursor:pointer;font-size:16px;opacity:0.6;margin-left:8px;';
+            btn.onclick = () => speakMessage(content, btn);
+            div.appendChild(btn);
+        } else {
+            div.textContent = content;
+        }
+        chat.appendChild(div);
+        chat.scrollTop = chat.scrollHeight;
+        return div;
+    }
+
+    function startStream() {
+        streamElement = document.createElement('div');
+        streamElement.className = 'message lyra';
+        chat.appendChild(streamElement);
+        streamBuffer = '';
+        isStreaming = true;
+        typing.classList.add('active');
+        return streamElement;
+    }
+
+    function appendStream(text) {
+        if (!streamElement) startStream();
+        streamBuffer += text;
+        // Use a text node so appended buttons aren't wiped
+        let textNode = streamElement._textNode;
+        if (!textNode) {
+            streamElement.textContent = '';
+            textNode = document.createTextNode('');
+            streamElement._textNode = textNode;
+            streamElement.appendChild(textNode);
+        }
+        textNode.nodeValue = streamBuffer;
+        chat.scrollTop = chat.scrollHeight;
+    }
+
+    function finishStream() {
+        isStreaming = false;
+        typing.classList.remove('active');
+        if (streamElement && streamBuffer) {
+            const text = streamBuffer;
+            const btn = document.createElement('button');
+            btn.textContent = '🔊';
+            btn.title = 'Speak this message';
+            btn.style = 'float:right;background:none;border:none;cursor:pointer;font-size:16px;opacity:0.6;margin-left:8px;';
+            btn.onclick = () => speakMessage(text, btn);
+            streamElement.appendChild(btn);
+        }
+        streamElement = null;
+        streamBuffer = '';
+    }
+
+        async function speakMessage(text, btn) {
+        if (btn.dataset.playing === 'true') {
+            btn.textContent = '🔊';
+            btn.dataset.playing = 'false';
+            return;
+        }
+        try {
+            btn.textContent = '⏳';
+            const res = await fetch('http://100.113.72.116:11440/api/voice_speak', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ params: { text: text } })
+            });
+            if (!res.ok) throw new Error('Voice request failed');
+            await res.json();
+            btn.textContent = '🔊';
+            btn.dataset.playing = 'false';
+        } catch(e) {
+            btn.textContent = '🔊';
+            btn.dataset.playing = 'false';
+            console.error('Voice error:', e);
+        }
+    }
+	
+    function updateProfileUI() {
+        const map = {
+            empathy: 'empathyValue',
+            brevity: 'brevityValue',
+            socratic: 'socraticValue',
+            depth: 'depthValue',
+            challenge: 'challengeValue'
+        };
+        const bars = {
+            empathy: 'empathyBar',
+            brevity: 'brevityBar',
+            socratic: 'socraticBar',
+            depth: 'depthBar',
+            challenge: 'challengeBar'
+        };
+        for (const [key, id] of Object.entries(map)) {
+            const el = document.getElementById(id);
+            if (el) el.textContent = profile[key].toFixed(3);
+        }
+        for (const [key, id] of Object.entries(bars)) {
+            const el = document.getElementById(id);
+            if (el) el.style.width = (profile[key] * 100) + '%';
+        }
+        document.getElementById('relationshipMode').textContent = profile.mode;
+        document.getElementById('driftCount').textContent = driftEvents.length + ' events';
+    }
+
+    function applyNudge(field, delta, source) {
+        const old = profile[field];
+        const neu = Math.max(0, Math.min(1, old + delta));
+        profile[field] = neu;
+        driftEvents.push({ field, old, neu, delta: neu - old, source, time: Date.now() });
+        if (driftEvents.length > 30) driftEvents.shift();
+        updateProfileUI();
+    }
+
+    function detectNudges(text) {
+        const n = [];
+        const l = text.toLowerCase();
+        if (l.includes('shorter') || l.includes('concise') || l.includes('brief')) 
+            n.push({ field: 'brevity', delta: 0.04 });
+        if (l.includes('deeper') || l.includes('elaborate') || l.includes('expand')) 
+            n.push({ field: 'depth', delta: 0.04 });
+        if (l.includes('challenge') || l.includes('push') || l.includes('harder')) 
+            n.push({ field: 'challenge', delta: 0.05 });
+        if (l.includes('gentle') || l.includes('kind') || l.includes('soft')) 
+            n.push({ field: 'challenge', delta: -0.04 });
+        if (l.includes('question') || l.includes('socratic') || l.includes('ask me')) 
+            n.push({ field: 'socratic', delta: 0.04 });
+        if (l.includes('warm') || l.includes('compassion') || l.includes('care')) 
+            n.push({ field: 'empathy', delta: 0.03 });
+        if (l.includes('direct') || l.includes('get to the point')) {
+            n.push({ field: 'brevity', delta: 0.03 });
+            n.push({ field: 'empathy', delta: -0.02 });
+        }
+        return n;
+    }
+
+    // ── EMOTION PILLS ──
+    document.querySelectorAll('.emotion-pill').forEach(pill => {
+        pill.addEventListener('click', function() {
+            document.querySelectorAll('.emotion-pill').forEach(p => p.classList.remove('active'));
+            this.classList.add('active');
+            currentEmotion = this.dataset.emotion;
+            document.getElementById('currentEmotion').textContent = currentEmotion;
+            toast(`🎭 ${currentEmotion}`, 'success', 1000);
+        });
+    });
+
+    // ── AUDIO CONTEXT ──
+    function getAudioCtx() {
+        if (!audioCtx || audioCtx.state === 'closed') {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 24000 });
+        }
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        return audioCtx;
+    }
+
+    async function playPcm(data) {
+        try {
+            const raw = new Int16Array(data);
+            const float32 = new Float32Array(raw.length);
+            for (let i = 0; i < raw.length; i++) {
+                float32[i] = raw[i] / 32768.0;
+            }
+            const ctx = getAudioCtx();
+            const buf = ctx.createBuffer(1, float32.length, 24000);
+            buf.getChannelData(0).set(float32);
+            const src = ctx.createBufferSource();
+            src.buffer = buf;
+            src.connect(ctx.destination);
+            return new Promise(r => { src.onended = r; src.start(); });
+        } catch (e) { console.warn('[Audio]', e); }
+    }
+
+    // ── WEBSOCKET ──
+    function connectWS() {
+        if (voiceWs && voiceWs.readyState <= 1) return;
+        const proto = location.protocol === 'https:' ? 'wss:' : 'ws:';
+        voiceWs = new WebSocket(proto + '//' + location.host + '/ws');
+        voiceWs.binaryType = 'arraybuffer';
+
+        voiceWs.onopen = () => {
+            statusLight.className = 'status-dot online';
+            toast('🔗 Connected', 'success');
+            voiceWs.send(JSON.stringify({
+                type: 'client_ready',
+                user_id: sessionId,
+                device_id: 'web',
+                stream_audio: 1
+            }));
+        };
+
+        voiceWs.onmessage = (e) => {
+            if (e.data instanceof ArrayBuffer) {
+                const data = new Uint8Array(e.data);
+                if (data.length > 5) {
+                    const audioData = data.slice(5);
+                    if (audioData.length > 0) {
+                        audioQueue = audioQueue.then(() => playPcm(audioData.buffer));
+                    }
+                }
+                return;
+            }
+            try {
+                const msg = JSON.parse(e.data);
+                switch (msg.type) {
+                    case 'assistant':
+                        finishStream();
+                        addMessage(msg.content, 'lyra');
+                        break;
+                    case 'assistant_end':
+                        finishStream();
+                        break;
+                    case 'assistant_chunk':
+                        appendStream(msg.content);
+                        break;
+                    case 'thought':
+                        addMessage('💭 ' + msg.content, 'thought');
+                        break;
+                    case 'asr_transcript':
+                        addMessage(msg.text, 'user');
+                        break;
+                    case 'bridge_status':
+                        liveOn = msg.active;
+                        document.getElementById('liveToggle').innerHTML =
+                            `<span class="icon">🎤</span> Live: ${liveOn ? 'ON' : 'OFF'}`;
+                        toast(liveOn ? '🎤 Live on' : '🔇 Live off', 'success', 1000);
+                        break;
+                    case 'relationship_update':
+                        if (msg.profile) {
+                            Object.assign(profile, msg.profile);
+                            updateProfileUI();
+                        }
+                        break;
+                    case 'handshake_ack':
+                        if (msg.user_id) {
+                            sessionId = msg.user_id;
+                            localStorage.setItem('synap_session', sessionId);
+                        }
+                        break;
+                    case 'emotion_update':
+                        if (msg.emotion) {
+                            currentEmotion = msg.emotion;
+                            document.getElementById('currentEmotion').textContent = currentEmotion;
+                            document.querySelectorAll('.emotion-pill').forEach(p => {
+                                p.classList.toggle('active', p.dataset.emotion === currentEmotion);
+                            });
+                        }
+                        break;
+                    case 'done':
+                        finishStream();
+                        break;
+                    case 'error':
+                        toast('❌ ' + (msg.error || 'Error'), 'error');
+                        finishStream();
+                        break;
+                }
+            } catch (_) {}
+        };
+
+        voiceWs.onclose = () => {
+            statusLight.className = 'status-dot';
+            setTimeout(connectWS, 3000);
+        };
+        voiceWs.onerror = () => voiceWs.close();
+    }
+
+    connectWS();
+
+    // ── SEND ──
+    async function sendMessage(text) {
+        if (sendInProgress) {
+            toast('⏳ Wait for response', 'error');
+            return;
+        }
+        if (!text.trim()) return;
+
+        // Nudges
+        const nudges = detectNudges(text);
+        for (const n of nudges) {
+            applyNudge(n.field, n.delta, 'message');
+        }
+
+        sendInProgress = true;
+        sendBtn.disabled = true;
+        input.disabled = true;
+        addMessage(text, 'user');
+        input.value = '';
+
+        if (!voiceWs || voiceWs.readyState !== WebSocket.OPEN) {
+            toast('⚠️ Disconnected, reconnecting...', 'error');
+            connectWS();
+            setTimeout(() => {
+                if (voiceWs && voiceWs.readyState === WebSocket.OPEN) {
+                    sendMessage(text);
+                } else {
+                    toast('❌ Failed to reconnect', 'error');
+                    sendInProgress = false;
+                    sendBtn.disabled = false;
+                    input.disabled = false;
+                }
+            }, 1500);
+            return;
+        }
+
+        startStream();
+        voiceWs.send(JSON.stringify({
+            type: 'text_message',
+            content: text,
+            user_id: sessionId,
+            relationship_profile: profile,
+            emotion: currentEmotion
+        }));
+
+        sendInProgress = false;
+        sendBtn.disabled = false;
+        input.disabled = false;
+        input.focus();
+    }
+
+    // ── EVENT BINDING ──
+    sendBtn.addEventListener('click', () => sendMessage(input.value));
+    input.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(input.value); });
+
+    document.getElementById('interruptBtn').addEventListener('click', () => {
+        if (isStreaming) {
+            finishStream();
+            toast('⏹ Interrupted', 'success');
+        }
+    });
+
+    document.getElementById('liveToggle').addEventListener('click', () => {
+        if (!voiceWs || voiceWs.readyState !== WebSocket.OPEN) {
+            connectWS();
+            setTimeout(() => document.getElementById('liveToggle').click(), 500);
+            return;
+        }
+        liveOn = !liveOn;
+        voiceWs.send(JSON.stringify({ type: 'bridge_toggle', active: liveOn }));
+    });
+
+    document.getElementById('storyBtn').addEventListener('click', () => {
+        input.value = "Tell me a story. Be vivid and immersive.";
+        sendMessage(input.value);
+    });
+
+    document.getElementById('brainstormBtn').addEventListener('click', () => {
+        input.value = "Let's brainstorm. Help me explore ideas freely.";
+        sendMessage(input.value);
+    });
+
+    document.getElementById('resetProfileBtn').addEventListener('click', () => {
+        profile = { empathy: 0.5, brevity: 0.5, socratic: 0.5, depth: 0.5, challenge: 0.5, mode: 'collaborator' };
+        driftEvents = [];
+        updateProfileUI();
+        toast('↺ Profile reset', 'success');
+    });
+
+    // ── QR ──
+    async function genQR() {
+        try {
+            const r = await fetch('/provision/generate', { method: 'POST' });
+            const d = await r.json();
+            const container = document.getElementById('qrcode');
+            container.innerHTML = '';
+            if (typeof QRCode !== 'undefined') {
+                new QRCode(container, { text: d.nonce, width: 140, height: 140 });
+            } else {
+                container.textContent = 'Token: ' + d.nonce;
+            }
+            document.getElementById('qrStatus').textContent = 'Scan to pair';
+            document.getElementById('qrStatus').className = 'qr-status';
+        } catch (_) {
+            document.getElementById('qrStatus').textContent = '⚠️ QR unavailable';
+        }
+    }
+    setTimeout(genQR, 500);
+    document.getElementById('refreshQrBtn').addEventListener('click', genQR);
+
+    // ── UPTIME ──
+    setInterval(() => {
+        uptimeSeconds++;
+        const m = String(Math.floor(uptimeSeconds / 60)).padStart(2, '0');
+        const s = String(uptimeSeconds % 60).padStart(2, '0');
+        document.getElementById('uptime').textContent = m + ':' + s;
+    }, 1000);
+
+    // ── HEALTH ──
+    async function health() {
+        try {
+            const r = await fetch('/health');
+            if (r.ok) {
+                const d = await r.json();
+                if (d.memory_count !== undefined) {
+                    document.getElementById('memoryCount').textContent = d.memory_count;
+                }
+            }
+        } catch (_) {}
+    }
+    health();
+    setInterval(health, 15000);
+
+    // ── MOCK METRICS (visual demo) ──
+    let mockClarity = 0.5, mockDominance = 0.5;
+    setInterval(() => {
+        mockClarity = Math.min(0.95, Math.max(0.1, mockClarity + (Math.random() - 0.5) * 0.02));
+        mockDominance = Math.min(0.95, Math.max(0.1, mockDominance + (Math.random() - 0.5) * 0.02));
+        document.getElementById('clarityValue').textContent = mockClarity.toFixed(3);
+        document.getElementById('barClarity').style.width = (mockClarity * 100) + '%';
+        document.getElementById('dominanceValue').textContent = mockDominance.toFixed(3);
+        document.getElementById('barDominance').style.width = (mockDominance * 100) + '%';
+        
+        const archetypes = ['Balanced', 'Active', 'Reflective', 'Driven', 'Calm'];
+        document.getElementById('archetype').textContent = archetypes[Math.floor(Math.random() * archetypes.length)];
+    }, 3000);
+
+    // ── INIT ──
+    updateProfileUI();
+    input.focus();
+    toast('✦ Synap ready', 'success', 1500);
+
+})();
+</script>
+</body>
+</html>

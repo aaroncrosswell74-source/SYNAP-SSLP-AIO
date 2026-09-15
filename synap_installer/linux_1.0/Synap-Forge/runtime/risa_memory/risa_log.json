@@ -1,0 +1,795 @@
+{
+  "schema": 1,
+  "successful_repairs": [
+    {
+      "timestamp": 1786371833.697932,
+      "strategy": "disk",
+      "divergence": {
+        "pattern_class": "hardcoded_tmp_path",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\llama.cpp\\scripts\\snapdragon\\qdc\\run_qdc_jobs.py",
+        "line_number": 146,
+        "matched_text": "Android zip (Appium/pytest). Extracted by QDC under /qdc/appium/.\n\n    Zip structure:\n      llama_cpp_bundle/            installed package (adb pushed to /data/local/tmp/)\n      run-{bench,cli,completion,tool}.sh  upstream adb wrappers (patched)\n      tests/\n        utils.py                   shared adb helpers\n        conftest.py                Appium pytest fixtures\n        test_bench_posix.py        bench + cli tests (for --test bench or all)\n        test_backend_ops_posix.py  test-backend-ops on HTP0\n      requirements.txt\n      pytest.ini                   addopts = --junitxml=results.xml\n    ",
+        "replacement": null,
+        "reason": "Unix temporary directory is embedded in executable Python code",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\llama.cpp\\scripts\\snapdragon\\qdc\\run_qdc_jobs.py",
+        "pattern_class": "hardcoded_tmp_path",
+        "old_text": "Android zip (Appium/pytest). Extracted by QDC under /qdc/appium/.\n\n    Zip structure:\n      llama_cpp_bundle/            installed package (adb pushed to /data/local/tmp/)\n      run-{bench,cli,completion,tool}.sh  upstream adb wrappers (patched)\n      tests/\n        utils.py                   shared adb helpers\n        conftest.py                Appium pytest fixtures\n        test_bench_posix.py        bench + cli tests (for --test bench or all)\n        test_backend_ops_posix.py  test-backend-ops on HTP0\n      requirements.txt\n      pytest.ini                   addopts = --junitxml=results.xml\n    ",
+        "new_text": "(Path(tempfile.gettempdir()) / \"oid zip (Appium/pytest). Extracted by QDC under /qdc/appium/.\n\n    Zip structure:\n      llama_cpp_bundle/            installed package (adb pushed to /data/local/tmp/)\n      run-{bench,cli,completion,tool}.sh  upstream adb wrappers (patched)\n      tests/\n        utils.py                   shared adb helpers\n        conftest.py                Appium pytest fixtures\n        test_bench_posix.py        bench + cli tests (for --test bench or all)\n        test_backend_ops_posix.py  test-backend-ops on HTP0\n      requirements.txt\n      pytest.ini                   addopts = --junitxml=results.xml\n    \")",
+        "line_number": 146,
+        "mutation_id": "e78f8063314b1e44",
+        "reason": "Use platform-native temporary directory"
+      }
+    },
+    {
+      "timestamp": 1786371833.7340896,
+      "strategy": "disk",
+      "divergence": {
+        "pattern_class": "hardcoded_tmp_path",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\llama.cpp\\scripts\\snapdragon\\qdc\\run_qdc_jobs.py",
+        "line_number": 208,
+        "matched_text": "Linux IoT zip (BASH framework). Extracted by QDC to /data/local/tmp/TestContent/.\n\n    Zip structure:\n      run_linux.sh               entry script (placeholder-substituted, LF line endings)\n      llama_cpp_bundle/          installed package\n    ",
+        "replacement": null,
+        "reason": "Unix temporary directory is embedded in executable Python code",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\llama.cpp\\scripts\\snapdragon\\qdc\\run_qdc_jobs.py",
+        "pattern_class": "hardcoded_tmp_path",
+        "old_text": "Linux IoT zip (BASH framework). Extracted by QDC to /data/local/tmp/TestContent/.\n\n    Zip structure:\n      run_linux.sh               entry script (placeholder-substituted, LF line endings)\n      llama_cpp_bundle/          installed package\n    ",
+        "new_text": "(Path(tempfile.gettempdir()) / \"x IoT zip (BASH framework). Extracted by QDC to /data/local/tmp/TestContent/.\n\n    Zip structure:\n      run_linux.sh               entry script (placeholder-substituted, LF line endings)\n      llama_cpp_bundle/          installed package\n    \")",
+        "line_number": 208,
+        "mutation_id": "be3952729024d612",
+        "reason": "Use platform-native temporary directory"
+      }
+    }
+  ],
+  "failed_repairs": [
+    {
+      "timestamp": 1786371832.919139,
+      "error": "Sandbox probe failed",
+      "divergence": {
+        "pattern_class": "hardcoded_synap_path",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\bootstrap.py",
+        "line_number": 11,
+        "matched_text": "/home/aaron/Synap-Forge/.consciousness_engine",
+        "replacement": null,
+        "reason": "Linux development path is embedded in executable Python code",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\bootstrap.py",
+        "pattern_class": "hardcoded_synap_path",
+        "old_text": "/home/aaron/Synap-Forge/.consciousness_engine",
+        "new_text": "(Path(os.getenv(\"SYNAP_BASE_DIR\", str(Path(__file__).resolve().parent))) / \".consciousness_engine\").resolve()",
+        "line_number": 11,
+        "mutation_id": "b5ce3a1cdb968d44",
+        "reason": "Resolve Synap root from environment/project context instead of Linux-only literal"
+      }
+    },
+    {
+      "timestamp": 1786371832.935975,
+      "error": "Sandbox probe failed",
+      "divergence": {
+        "pattern_class": "hardcoded_synap_path",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\knowledge_db.py",
+        "line_number": 18,
+        "matched_text": "/home/aaron/Synap-Forge/mcp/knowledge.db",
+        "replacement": null,
+        "reason": "Linux development path is embedded in executable Python code",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\knowledge_db.py",
+        "pattern_class": "hardcoded_synap_path",
+        "old_text": "/home/aaron/Synap-Forge/mcp/knowledge.db",
+        "new_text": "(Path(os.getenv(\"SYNAP_BASE_DIR\", str(Path(__file__).resolve().parent))) / \"mcp/knowledge.db\").resolve()",
+        "line_number": 18,
+        "mutation_id": "f30576e01cf3b83a",
+        "reason": "Resolve Synap root from environment/project context instead of Linux-only literal"
+      }
+    },
+    {
+      "timestamp": 1786371832.9746292,
+      "error": "Sandbox probe failed",
+      "divergence": {
+        "pattern_class": "hardcoded_synap_path",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\synap_server.py",
+        "line_number": 44,
+        "matched_text": "/home/aaron/Synap-Forge/.consciousness_engine",
+        "replacement": null,
+        "reason": "Linux development path is embedded in executable Python code",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\synap_server.py",
+        "pattern_class": "hardcoded_synap_path",
+        "old_text": "/home/aaron/Synap-Forge/.consciousness_engine",
+        "new_text": "(Path(os.getenv(\"SYNAP_BASE_DIR\", str(Path(__file__).resolve().parent))) / \".consciousness_engine\").resolve()",
+        "line_number": 44,
+        "mutation_id": "940c2218af00261a",
+        "reason": "Resolve Synap root from environment/project context instead of Linux-only literal"
+      }
+    },
+    {
+      "timestamp": 1786371832.9757388,
+      "error": "hardcoded_unix_executable requires a command-specific healer",
+      "divergence": {
+        "pattern_class": "hardcoded_unix_executable",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\synap_server.py",
+        "line_number": 2,
+        "matched_text": "#!/usr/bin/env python3",
+        "replacement": null,
+        "reason": "Unix executable path should be resolved through the platform",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\synap_server.py",
+        "pattern_class": "hardcoded_unix_executable",
+        "old_text": "#!/usr/bin/env python3",
+        "new_text": "",
+        "line_number": 2,
+        "mutation_id": "da0e65df431159ee",
+        "reason": "hardcoded_unix_executable requires a command-specific healer"
+      }
+    },
+    {
+      "timestamp": 1786371833.0710526,
+      "error": "Sandbox probe failed",
+      "divergence": {
+        "pattern_class": "hardcoded_tmp_path",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\loop\\circadian_rhythm.py",
+        "line_number": 100,
+        "matched_text": "/tmp/circadian_consolidation.lock",
+        "replacement": null,
+        "reason": "Unix temporary directory is embedded in executable Python code",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\loop\\circadian_rhythm.py",
+        "pattern_class": "hardcoded_tmp_path",
+        "old_text": "/tmp/circadian_consolidation.lock",
+        "new_text": "(Path(tempfile.gettempdir()) / \"circadian_consolidation.lock\")",
+        "line_number": 100,
+        "mutation_id": "1670b532ed369d3b",
+        "reason": "Use platform-native temporary directory"
+      }
+    },
+    {
+      "timestamp": 1786371833.0730894,
+      "error": "Sandbox probe failed",
+      "divergence": {
+        "pattern_class": "hardcoded_tmp_path",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\loop\\circadian_rhythm.py",
+        "line_number": 121,
+        "matched_text": "/tmp/circadian_consolidation.lock",
+        "replacement": null,
+        "reason": "Unix temporary directory is embedded in executable Python code",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\loop\\circadian_rhythm.py",
+        "pattern_class": "hardcoded_tmp_path",
+        "old_text": "/tmp/circadian_consolidation.lock",
+        "new_text": "(Path(tempfile.gettempdir()) / \"circadian_consolidation.lock\")",
+        "line_number": 121,
+        "mutation_id": "65ba9fd784113faf",
+        "reason": "Use platform-native temporary directory"
+      }
+    },
+    {
+      "timestamp": 1786371833.0758965,
+      "error": "Sandbox probe failed",
+      "divergence": {
+        "pattern_class": "hardcoded_synap_path",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\loop\\circadian_rhythm.py",
+        "line_number": 223,
+        "matched_text": "/home/aaron/Synap-Forge/.consciousness_engine/central_memory",
+        "replacement": null,
+        "reason": "Linux development path is embedded in executable Python code",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\loop\\circadian_rhythm.py",
+        "pattern_class": "hardcoded_synap_path",
+        "old_text": "/home/aaron/Synap-Forge/.consciousness_engine/central_memory",
+        "new_text": "(Path(os.getenv(\"SYNAP_BASE_DIR\", str(Path(__file__).resolve().parent))) / \".consciousness_engine/central_memory\").resolve()",
+        "line_number": 223,
+        "mutation_id": "12002e286e9f7892",
+        "reason": "Resolve Synap root from environment/project context instead of Linux-only literal"
+      }
+    },
+    {
+      "timestamp": 1786371833.0798476,
+      "error": "Sandbox probe failed",
+      "divergence": {
+        "pattern_class": "hardcoded_synap_path",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\loop\\circadian_rhythm.py",
+        "line_number": 182,
+        "matched_text": "/home/aaron/Synap-Forge/.consciousness_engine/central_memory",
+        "replacement": null,
+        "reason": "Linux development path is embedded in executable Python code",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\loop\\circadian_rhythm.py",
+        "pattern_class": "hardcoded_synap_path",
+        "old_text": "/home/aaron/Synap-Forge/.consciousness_engine/central_memory",
+        "new_text": "(Path(os.getenv(\"SYNAP_BASE_DIR\", str(Path(__file__).resolve().parent))) / \".consciousness_engine/central_memory\").resolve()",
+        "line_number": 182,
+        "mutation_id": "180d001b5fc62cab",
+        "reason": "Resolve Synap root from environment/project context instead of Linux-only literal"
+      }
+    },
+    {
+      "timestamp": 1786371833.0945697,
+      "error": "Sandbox probe failed",
+      "divergence": {
+        "pattern_class": "hardcoded_synap_path",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\loop\\recursive_improvement.py",
+        "line_number": 50,
+        "matched_text": "/home/aaron/Synap-Forge/central_memory",
+        "replacement": null,
+        "reason": "Linux development path is embedded in executable Python code",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\loop\\recursive_improvement.py",
+        "pattern_class": "hardcoded_synap_path",
+        "old_text": "/home/aaron/Synap-Forge/central_memory",
+        "new_text": "(Path(os.getenv(\"SYNAP_BASE_DIR\", str(Path(__file__).resolve().parent))) / \"central_memory\").resolve()",
+        "line_number": 50,
+        "mutation_id": "8d6f96f4cff1dc3b",
+        "reason": "Resolve Synap root from environment/project context instead of Linux-only literal"
+      }
+    },
+    {
+      "timestamp": 1786371833.0965629,
+      "error": "Sandbox probe failed",
+      "divergence": {
+        "pattern_class": "hardcoded_synap_path",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\loop\\recursive_improvement.py",
+        "line_number": 362,
+        "matched_text": "/home/aaron/Synap-Forge/central_memory",
+        "replacement": null,
+        "reason": "Linux development path is embedded in executable Python code",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\loop\\recursive_improvement.py",
+        "pattern_class": "hardcoded_synap_path",
+        "old_text": "/home/aaron/Synap-Forge/central_memory",
+        "new_text": "(Path(os.getenv(\"SYNAP_BASE_DIR\", str(Path(__file__).resolve().parent))) / \"central_memory\").resolve()",
+        "line_number": 362,
+        "mutation_id": "1f04f0842c6afc88",
+        "reason": "Resolve Synap root from environment/project context instead of Linux-only literal"
+      }
+    },
+    {
+      "timestamp": 1786371833.1021843,
+      "error": "Sandbox probe failed",
+      "divergence": {
+        "pattern_class": "hardcoded_synap_path",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\memory\\consolidation.py",
+        "line_number": 19,
+        "matched_text": "/home/aaron/Synap-Forge/central_memory/persona_memory.json",
+        "replacement": null,
+        "reason": "Linux development path is embedded in executable Python code",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\memory\\consolidation.py",
+        "pattern_class": "hardcoded_synap_path",
+        "old_text": "/home/aaron/Synap-Forge/central_memory/persona_memory.json",
+        "new_text": "(Path(os.getenv(\"SYNAP_BASE_DIR\", str(Path(__file__).resolve().parent))) / \"central_memory/persona_memory.json\").resolve()",
+        "line_number": 19,
+        "mutation_id": "4c76ac6dd375fab9",
+        "reason": "Resolve Synap root from environment/project context instead of Linux-only literal"
+      }
+    },
+    {
+      "timestamp": 1786371833.121648,
+      "error": "Sandbox probe failed",
+      "divergence": {
+        "pattern_class": "hardcoded_synap_path",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\memory\\safety_catch.py",
+        "line_number": 21,
+        "matched_text": "/home/aaron/Synap-Forge/central_memory/core_memory.json",
+        "replacement": null,
+        "reason": "Linux development path is embedded in executable Python code",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\memory\\safety_catch.py",
+        "pattern_class": "hardcoded_synap_path",
+        "old_text": "/home/aaron/Synap-Forge/central_memory/core_memory.json",
+        "new_text": "(Path(os.getenv(\"SYNAP_BASE_DIR\", str(Path(__file__).resolve().parent))) / \"central_memory/core_memory.json\").resolve()",
+        "line_number": 21,
+        "mutation_id": "cea543c9c115f4d0",
+        "reason": "Resolve Synap root from environment/project context instead of Linux-only literal"
+      }
+    },
+    {
+      "timestamp": 1786371833.1279814,
+      "error": "Sandbox probe failed",
+      "divergence": {
+        "pattern_class": "hardcoded_synap_path",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\memory\\store.py",
+        "line_number": 37,
+        "matched_text": "/home/aaron/Synap-Forge/.consciousness_engine",
+        "replacement": null,
+        "reason": "Linux development path is embedded in executable Python code",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\memory\\store.py",
+        "pattern_class": "hardcoded_synap_path",
+        "old_text": "/home/aaron/Synap-Forge/.consciousness_engine",
+        "new_text": "(Path(os.getenv(\"SYNAP_BASE_DIR\", str(Path(__file__).resolve().parent))) / \".consciousness_engine\").resolve()",
+        "line_number": 37,
+        "mutation_id": "2237223da3c54087",
+        "reason": "Resolve Synap root from environment/project context instead of Linux-only literal"
+      }
+    },
+    {
+      "timestamp": 1786371833.1592155,
+      "error": "No healer registered for 'python_syntax_error'",
+      "divergence": {
+        "pattern_class": "python_syntax_error",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\upulse\\arkwell_embedder.py",
+        "line_number": null,
+        "matched_text": "",
+        "replacement": null,
+        "reason": "Python source cannot currently be parsed",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\upulse\\arkwell_embedder.py",
+        "pattern_class": "python_syntax_error",
+        "old_text": "",
+        "new_text": "",
+        "line_number": null,
+        "mutation_id": "fb12cdb030a48eb9",
+        "reason": "No healer registered for 'python_syntax_error'"
+      }
+    },
+    {
+      "timestamp": 1786371833.1650913,
+      "error": "hardcoded_unix_executable requires a command-specific healer",
+      "divergence": {
+        "pattern_class": "hardcoded_unix_executable",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\upulse\\coversation_scoring.py",
+        "line_number": 1,
+        "matched_text": "0#!/usr/bin/env python3",
+        "replacement": null,
+        "reason": "Unix executable path should be resolved through the platform",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\upulse\\coversation_scoring.py",
+        "pattern_class": "hardcoded_unix_executable",
+        "old_text": "0#!/usr/bin/env python3",
+        "new_text": "",
+        "line_number": 1,
+        "mutation_id": "cbcd1da3a1f0f296",
+        "reason": "hardcoded_unix_executable requires a command-specific healer"
+      }
+    },
+    {
+      "timestamp": 1786371833.1682544,
+      "error": "No healer registered for 'python_syntax_error'",
+      "divergence": {
+        "pattern_class": "python_syntax_error",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\upulse\\integrator.py",
+        "line_number": null,
+        "matched_text": "",
+        "replacement": null,
+        "reason": "Python source cannot currently be parsed",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\upulse\\integrator.py",
+        "pattern_class": "python_syntax_error",
+        "old_text": "",
+        "new_text": "",
+        "line_number": null,
+        "mutation_id": "6245c3f2a976c47f",
+        "reason": "No healer registered for 'python_syntax_error'"
+      }
+    },
+    {
+      "timestamp": 1786371833.1759553,
+      "error": "Sandbox probe failed",
+      "divergence": {
+        "pattern_class": "hardcoded_tmp_path",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\upulse\\midas_emotional_engine.py",
+        "line_number": 101,
+        "matched_text": "/tmp/lyra_active_memory/emotional",
+        "replacement": null,
+        "reason": "Unix temporary directory is embedded in executable Python code",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\upulse\\midas_emotional_engine.py",
+        "pattern_class": "hardcoded_tmp_path",
+        "old_text": "/tmp/lyra_active_memory/emotional",
+        "new_text": "(Path(tempfile.gettempdir()) / \"lyra_active_memory/emotional\")",
+        "line_number": 101,
+        "mutation_id": "6b441f4b3098c5b4",
+        "reason": "Use platform-native temporary directory"
+      }
+    },
+    {
+      "timestamp": 1786371833.1774595,
+      "error": "No healer registered for 'python_syntax_error'",
+      "divergence": {
+        "pattern_class": "python_syntax_error",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\upulse\\mirror_steady_fine_sweep.py",
+        "line_number": null,
+        "matched_text": "",
+        "replacement": null,
+        "reason": "Python source cannot currently be parsed",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\upulse\\mirror_steady_fine_sweep.py",
+        "pattern_class": "python_syntax_error",
+        "old_text": "",
+        "new_text": "",
+        "line_number": null,
+        "mutation_id": "11b9ce080eef375b",
+        "reason": "No healer registered for 'python_syntax_error'"
+      }
+    },
+    {
+      "timestamp": 1786371833.182208,
+      "error": "No healer registered for 'python_syntax_error'",
+      "divergence": {
+        "pattern_class": "python_syntax_error",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\upulse\\observer_pulse.py",
+        "line_number": null,
+        "matched_text": "",
+        "replacement": null,
+        "reason": "Python source cannot currently be parsed",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\upulse\\observer_pulse.py",
+        "pattern_class": "python_syntax_error",
+        "old_text": "",
+        "new_text": "",
+        "line_number": null,
+        "mutation_id": "937a22c3c605b069",
+        "reason": "No healer registered for 'python_syntax_error'"
+      }
+    },
+    {
+      "timestamp": 1786371833.183732,
+      "error": "No healer registered for 'python_syntax_error'",
+      "divergence": {
+        "pattern_class": "python_syntax_error",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\upulse\\qbit_gateway.py",
+        "line_number": null,
+        "matched_text": "",
+        "replacement": null,
+        "reason": "Python source cannot currently be parsed",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\upulse\\qbit_gateway.py",
+        "pattern_class": "python_syntax_error",
+        "old_text": "",
+        "new_text": "",
+        "line_number": null,
+        "mutation_id": "b36fec5b3227f4f3",
+        "reason": "No healer registered for 'python_syntax_error'"
+      }
+    },
+    {
+      "timestamp": 1786371833.2004893,
+      "error": "No healer registered for 'python_syntax_error'",
+      "divergence": {
+        "pattern_class": "python_syntax_error",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\upulse\\treaty.py",
+        "line_number": null,
+        "matched_text": "",
+        "replacement": null,
+        "reason": "Python source cannot currently be parsed",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\upulse\\treaty.py",
+        "pattern_class": "python_syntax_error",
+        "old_text": "",
+        "new_text": "",
+        "line_number": null,
+        "mutation_id": "c40dfabbcf3d6904",
+        "reason": "No healer registered for 'python_syntax_error'"
+      }
+    },
+    {
+      "timestamp": 1786371833.5520835,
+      "error": "hardcoded_unix_executable requires a command-specific healer",
+      "divergence": {
+        "pattern_class": "hardcoded_unix_executable",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\llama.cpp\\scripts\\fetch_server_test_models.py",
+        "line_number": 81,
+        "matched_text": "'../build/bin/Release/llama-cli.exe' if os.name == 'nt' else '../build/bin/llama-cli'))",
+        "replacement": null,
+        "reason": "Unix executable path should be resolved through the platform",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\llama.cpp\\scripts\\fetch_server_test_models.py",
+        "pattern_class": "hardcoded_unix_executable",
+        "old_text": "'../build/bin/Release/llama-cli.exe' if os.name == 'nt' else '../build/bin/llama-cli'))",
+        "new_text": "",
+        "line_number": 81,
+        "mutation_id": "08e585af498b79e5",
+        "reason": "hardcoded_unix_executable requires a command-specific healer"
+      }
+    },
+    {
+      "timestamp": 1786371833.6073544,
+      "error": "hardcoded_unix_executable requires a command-specific healer",
+      "divergence": {
+        "pattern_class": "hardcoded_unix_executable",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\llama.cpp\\scripts\\tool_bench.py",
+        "line_number": 12,
+        "matched_text": "export LLAMA_SERVER_BIN_PATH=$PWD/build/bin/llama-server",
+        "replacement": null,
+        "reason": "Unix executable path should be resolved through the platform",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\llama.cpp\\scripts\\tool_bench.py",
+        "pattern_class": "hardcoded_unix_executable",
+        "old_text": "export LLAMA_SERVER_BIN_PATH=$PWD/build/bin/llama-server",
+        "new_text": "",
+        "line_number": 12,
+        "mutation_id": "e94ee262289a94c0",
+        "reason": "hardcoded_unix_executable requires a command-specific healer"
+      }
+    },
+    {
+      "timestamp": 1786371833.6084895,
+      "error": "hardcoded_unix_executable requires a command-specific healer",
+      "divergence": {
+        "pattern_class": "hardcoded_unix_executable",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\llama.cpp\\scripts\\tool_bench.py",
+        "line_number": 15,
+        "matched_text": "./scripts/tool_bench.py run --n 10 --temp -1 --temp 0 --temp 1 --temp 2 --temp 5 --llama-baseline $PWD/buildMaster/bin/llama-server --output qwen14b.jsonl --hf bartowski/Qwen2.5-14B-Instruct-GGUF:Q4_K_L",
+        "replacement": null,
+        "reason": "Unix executable path should be resolved through the platform",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\llama.cpp\\scripts\\tool_bench.py",
+        "pattern_class": "hardcoded_unix_executable",
+        "old_text": "./scripts/tool_bench.py run --n 10 --temp -1 --temp 0 --temp 1 --temp 2 --temp 5 --llama-baseline $PWD/buildMaster/bin/llama-server --output qwen14b.jsonl --hf bartowski/Qwen2.5-14B-Instruct-GGUF:Q4_K_L",
+        "new_text": "",
+        "line_number": 15,
+        "mutation_id": "6f47e7cc57bea51e",
+        "reason": "hardcoded_unix_executable requires a command-specific healer"
+      }
+    },
+    {
+      "timestamp": 1786371833.6487644,
+      "error": "Sandbox probe failed",
+      "divergence": {
+        "pattern_class": "hardcoded_tmp_path",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\llama.cpp\\scripts\\snapdragon\\qdc\\run_qdc_jobs.py",
+        "line_number": 119,
+        "matched_text": "/bin/bash /data/local/tmp/TestContent/run_linux.sh",
+        "replacement": null,
+        "reason": "Unix temporary directory is embedded in executable Python code",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\llama.cpp\\scripts\\snapdragon\\qdc\\run_qdc_jobs.py",
+        "pattern_class": "hardcoded_tmp_path",
+        "old_text": "/bin/bash /data/local/tmp/TestContent/run_linux.sh",
+        "new_text": "(Path(tempfile.gettempdir()) / \"bash /data/local/tmp/TestContent/run_linux.sh\")",
+        "line_number": 119,
+        "mutation_id": "328a1ffc36317a28",
+        "reason": "Use platform-native temporary directory"
+      }
+    },
+    {
+      "timestamp": 1786371833.7353323,
+      "error": "hardcoded_unix_executable requires a command-specific healer",
+      "divergence": {
+        "pattern_class": "hardcoded_unix_executable",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\llama.cpp\\scripts\\snapdragon\\qdc\\run_qdc_jobs.py",
+        "line_number": 119,
+        "matched_text": "_LINUX_ENTRY_SCRIPT = \"/bin/bash /data/local/tmp/TestContent/run_linux.sh\"",
+        "replacement": null,
+        "reason": "Unix executable path should be resolved through the platform",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\llama.cpp\\scripts\\snapdragon\\qdc\\run_qdc_jobs.py",
+        "pattern_class": "hardcoded_unix_executable",
+        "old_text": "_LINUX_ENTRY_SCRIPT = \"/bin/bash /data/local/tmp/TestContent/run_linux.sh\"",
+        "new_text": "",
+        "line_number": 119,
+        "mutation_id": "e55a9a0eb4c5778a",
+        "reason": "hardcoded_unix_executable requires a command-specific healer"
+      }
+    },
+    {
+      "timestamp": 1786371833.7363565,
+      "error": "hardcoded_unix_executable requires a command-specific healer",
+      "divergence": {
+        "pattern_class": "hardcoded_unix_executable",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\llama.cpp\\scripts\\snapdragon\\qdc\\run_qdc_jobs.py",
+        "line_number": 135,
+        "matched_text": "\"\"\"Write text with LF line endings (required by /bin/bash on Linux).\"\"\"",
+        "replacement": null,
+        "reason": "Unix executable path should be resolved through the platform",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\llama.cpp\\scripts\\snapdragon\\qdc\\run_qdc_jobs.py",
+        "pattern_class": "hardcoded_unix_executable",
+        "old_text": "\"\"\"Write text with LF line endings (required by /bin/bash on Linux).\"\"\"",
+        "new_text": "",
+        "line_number": 135,
+        "mutation_id": "d9ba71ec41f9468b",
+        "reason": "hardcoded_unix_executable requires a command-specific healer"
+      }
+    },
+    {
+      "timestamp": 1786371833.7403214,
+      "error": "Sandbox probe failed",
+      "divergence": {
+        "pattern_class": "hardcoded_tmp_path",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\llama.cpp\\scripts\\snapdragon\\qdc\\tests\\run_bench_tests_posix.py",
+        "line_number": 36,
+        "matched_text": "mkdir -p /data/local/tmp/gguf ",
+        "replacement": null,
+        "reason": "Unix temporary directory is embedded in executable Python code",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\llama.cpp\\scripts\\snapdragon\\qdc\\tests\\run_bench_tests_posix.py",
+        "pattern_class": "hardcoded_tmp_path",
+        "old_text": "mkdir -p /data/local/tmp/gguf ",
+        "new_text": "(Path(tempfile.gettempdir()) / \"r -p /data/local/tmp/gguf \")",
+        "line_number": 36,
+        "mutation_id": "318ae4ad35b63686",
+        "reason": "Use platform-native temporary directory"
+      }
+    },
+    {
+      "timestamp": 1786371833.7434964,
+      "error": "Sandbox probe failed",
+      "divergence": {
+        "pattern_class": "hardcoded_tmp_path",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\llama.cpp\\scripts\\snapdragon\\qdc\\tests\\utils.py",
+        "line_number": 18,
+        "matched_text": "/data/local/tmp/llama.cpp",
+        "replacement": null,
+        "reason": "Unix temporary directory is embedded in executable Python code",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\llama.cpp\\scripts\\snapdragon\\qdc\\tests\\utils.py",
+        "pattern_class": "hardcoded_tmp_path",
+        "old_text": "/data/local/tmp/llama.cpp",
+        "new_text": "(Path(tempfile.gettempdir()) / \"a/local/tmp/llama.cpp\")",
+        "line_number": 18,
+        "mutation_id": "90272043201b2097",
+        "reason": "Use platform-native temporary directory"
+      }
+    },
+    {
+      "timestamp": 1786371833.7449632,
+      "error": "Sandbox probe failed",
+      "divergence": {
+        "pattern_class": "hardcoded_tmp_path",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\llama.cpp\\scripts\\snapdragon\\qdc\\tests\\utils.py",
+        "line_number": 21,
+        "matched_text": "/data/local/tmp/QDC_logs",
+        "replacement": null,
+        "reason": "Unix temporary directory is embedded in executable Python code",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\llama.cpp\\scripts\\snapdragon\\qdc\\tests\\utils.py",
+        "pattern_class": "hardcoded_tmp_path",
+        "old_text": "/data/local/tmp/QDC_logs",
+        "new_text": "(Path(tempfile.gettempdir()) / \"a/local/tmp/QDC_logs\")",
+        "line_number": 21,
+        "mutation_id": "b9eab7c638bc17ee",
+        "reason": "Use platform-native temporary directory"
+      }
+    },
+    {
+      "timestamp": 1786371833.7464213,
+      "error": "Sandbox probe failed",
+      "divergence": {
+        "pattern_class": "hardcoded_tmp_path",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\llama.cpp\\scripts\\snapdragon\\qdc\\tests\\utils.py",
+        "line_number": 24,
+        "matched_text": "/data/local/tmp/gguf/model.gguf",
+        "replacement": null,
+        "reason": "Unix temporary directory is embedded in executable Python code",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\llama.cpp\\scripts\\snapdragon\\qdc\\tests\\utils.py",
+        "pattern_class": "hardcoded_tmp_path",
+        "old_text": "/data/local/tmp/gguf/model.gguf",
+        "new_text": "(Path(tempfile.gettempdir()) / \"a/local/tmp/gguf/model.gguf\")",
+        "line_number": 24,
+        "mutation_id": "0874d7cc383f27d0",
+        "reason": "Use platform-native temporary directory"
+      }
+    },
+    {
+      "timestamp": 1786371833.748135,
+      "error": "Sandbox probe failed",
+      "divergence": {
+        "pattern_class": "hardcoded_tmp_path",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\llama.cpp\\scripts\\snapdragon\\qdc\\tests\\utils.py",
+        "line_number": 25,
+        "matched_text": "/data/local/tmp/scorecard_prompts",
+        "replacement": null,
+        "reason": "Unix temporary directory is embedded in executable Python code",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\llama.cpp\\scripts\\snapdragon\\qdc\\tests\\utils.py",
+        "pattern_class": "hardcoded_tmp_path",
+        "old_text": "/data/local/tmp/scorecard_prompts",
+        "new_text": "(Path(tempfile.gettempdir()) / \"a/local/tmp/scorecard_prompts\")",
+        "line_number": 25,
+        "mutation_id": "1278d3f8f7d0e57b",
+        "reason": "Use platform-native temporary directory"
+      }
+    },
+    {
+      "timestamp": 1786371833.9892313,
+      "error": "Sandbox probe failed",
+      "divergence": {
+        "pattern_class": "hardcoded_tmp_path",
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\llama.cpp\\examples\\llama-eval\\llama-server-simulator.py",
+        "line_number": 49,
+        "matched_text": "/tmp/simulator-debug.log",
+        "replacement": null,
+        "reason": "Unix temporary directory is embedded in executable Python code",
+        "metadata": {}
+      },
+      "patch": {
+        "source_file": "C:\\Users\\User\\AndroidStudioProjects\\windows_installer2\\staging\\Synap-Forge\\.consciousness_engine\\llama.cpp\\examples\\llama-eval\\llama-server-simulator.py",
+        "pattern_class": "hardcoded_tmp_path",
+        "old_text": "/tmp/simulator-debug.log",
+        "new_text": "(Path(tempfile.gettempdir()) / \"simulator-debug.log\")",
+        "line_number": 49,
+        "mutation_id": "1617a5090b575639",
+        "reason": "Use platform-native temporary directory"
+      }
+    }
+  ],
+  "patterns": {
+    "hardcoded_synap_path": {
+      "successes": 0,
+      "failures": 10
+    },
+    "hardcoded_unix_executable": {
+      "successes": 0,
+      "failures": 7
+    },
+    "hardcoded_tmp_path": {
+      "successes": 2,
+      "failures": 10
+    },
+    "python_syntax_error": {
+      "successes": 0,
+      "failures": 6
+    }
+  }
+}

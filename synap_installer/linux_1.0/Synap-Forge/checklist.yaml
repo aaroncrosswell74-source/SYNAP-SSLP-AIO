@@ -1,0 +1,32 @@
+# deployment/checklist.yaml
+production_readiness:
+  health_checks:
+    - /health/live: returns 200
+    - /health/ready: returns 200
+    - /health/detail: shows all components ready
+  
+  security:
+    - All /api/rl/* routes require auth
+    - WebSocket requires auth
+    - Public paths whitelisted
+    - Rate limiting configured
+  
+  state:
+    - Checkpoints directory exists
+    - Backup cron configured
+    - Recovery procedure documented
+  
+  deployment:
+    - Docker image built
+    - Compose stack tested
+    - Nginx configured
+    - TLS certificates ready
+  
+  monitoring:
+    - Prometheus metrics exposed
+    - Grafana dashboard configured
+    - Alerts configured for:
+      - Service down
+      - High error rate
+      - Memory usage > 80%
+      - Redis connection failure

@@ -1,0 +1,21 @@
+{
+  "studio": {
+    "http_url": "http://127.0.0.1:11436"
+  },
+  "interceptor": {
+    "http_url": "http://127.0.0.1:11439"
+  },
+  "mcp_http": {
+    "http_url": "http://127.0.0.1:11440"
+  },
+  "mcp_ws": {
+    "ws_url": "ws://127.0.0.1:11441"
+  },
+  "llm": {
+    "host": "127.0.0.1",
+    "port": 11435,
+    "protocol": "http",
+    "provider": "llama.cpp",
+    "model": "qwen2.5-coder-1.5b-instruct"
+  }
+}

@@ -1,0 +1,681 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\Users\User\AndroidStudioProjects\git_stage_linux\app\gitstage> tree /f
+Folder PATH listing
+Volume serial number is 000000C1 181A:7654
+C:.
+└───synap_installer
+    ├───docs
+    │       requirements.txt
+    │       tree_linux.txt
+    │       voice-live-env.txt
+    │       voice-live-smoke.json
+    │
+    └───linux_1.0
+        ├───central_memory
+        │       nightly_cycle_log.json
+        │       persona_memory.json
+        │
+        ├───docs
+        └───Synap-Forge
+            │   .env
+            │   api_routes.py
+            │   audit_production.py
+            │   bootstrap.py
+            │   boot_manager.py
+            │   bridge_config.json
+            │   checklist.yaml
+            │   checkpoint_manager.py
+            │   compiler_diagnostic.log
+            │   config.py
+            │   constants.py
+            │   dashboard_emotion_panel.html
+            │   disk_usage.txt
+            │   docker-compose.prod.yaml
+            │   dockerfile
+            │   embedder.py
+            │   env_loader.py
+            │   failure_diagnostics.txt
+            │   health_check.py
+            │   health_registry.py
+            │   identity_lock.py
+            │   index.html
+            │   json
+            │   knowledge_db.json
+            │   knowledge_db.py
+            │   launcher.py
+            │   launch_mcp.sh
+            │   persistence.py
+            │   prosody.py
+            │   provisioning.py
+            │   pytest.ini
+            │   re
+            │   requirements-linux.lock
+            │   requirements-windows.lock
+            │   risa_debug.py
+            │   risa_v3.1.py
+            │   risa_v3.2.py
+            │   risa_v3_safe.py
+            │   role_map.json
+            │   router_modes.py
+            │   runtime_topology.py
+            │   safety.py
+            │   security.py
+            │   security_middleware.py
+            │   service_discovery.py
+            │   service_divergence.py
+            │   service_probe.py
+            │   service_registry.py
+            │   state_bus.py
+            │   stt_engine.py
+            │   studio_cli.py
+            │   subprocess
+            │   synap_config.json
+            │   synap_server.py
+            │   sys
+            │   threading
+            │   time
+            │   websocket.py
+            │   websocket_auth.py
+            │   websocket_manager.py
+            │   __init__.py
+            │
+            ├───.hypothesis
+            │   │   .gitignore
+            │   │
+            │   ├───constants
+            │   ├───examples
+            │   │   ├───04e6b3400353b141
+            │   │   │       1252a08f36e23525
+            │   │   │       df4c79718b09fed9
+            │   │   │
+            │   │   ├───1252a08f36e23525
+            │   │   │       53854ad46d82ba3b
+            │   │   │
+            │   │   └───df4c79718b09fed9
+            │   │           7240ea0006f6cd96
+            │   │           a3071a0ba9e782ee
+            │   │           b7a23755668202a3
+            │   │
+            │   └───unicode_data
+            │       ├───13.0.0
+            │       │       charmap.json.gz
+            │       │
+            │       └───16.0.0
+            │               charmap.json.gz
+            │
+            ├───central_memory
+            │   │   autobiography.jsonl
+            │   │
+            │   ├───active
+            │   ├───contexts
+            │   ├───embeddings
+            │   ├───emotional
+            │   └───interactions
+            ├───cognition
+            │       arbitration.py
+            │       cognitive.py
+            │       confidence.py
+            │       contradiction.py
+            │       intent.py
+            │       modes.py
+            │       relevance.py
+            │       semantic_drift.py
+            │       uncertainty.py
+            │       __init__.py
+            │
+            ├───conf
+            │       mfcc.conf
+            │       model.conf
+            │
+            ├───core
+            │       arbitration.py
+            │       base.py
+            │       budget.py
+            │       contract.py
+            │       event_log.py
+            │       orchestrator.py
+            │       pipeline.py
+            │       prompt_manager.py
+            │       scheduler.py
+            │       serialization.py
+            │       stages.py
+            │       state.py
+            │       __init__.py
+            │
+            ├───filters
+            │       anti_corp.py
+            │       chunker.py
+            │       sanitize.py
+            │
+            ├───graph
+            │   │   disambig_tid.int
+            │   │   Gr.fst
+            │   │   HCLr.fst
+            │   │
+            │   └───phones
+            │           word_boundary.int
+            │
+            ├───ir
+            │   │   compiler.py
+            │   │   compiler_init.py
+            │   │   compiler_iterative.py
+            │   │   ir_builder.py
+            │   │   ir_invariants.py
+            │   │   ir_store.py
+            │   │   ir_types.py
+            │   │   __init__.py
+            │   │
+            │   └───__pycache__
+            │           compiler.cpython-314.pyc
+            │           compiler_init.cpython-314.pyc
+            │           ir_builder.cpython-314.pyc
+            │           ir_invariants.cpython-314.pyc
+            │           ir_store.cpython-314.pyc
+            │           ir_types.cpython-314.pyc
+            │           __init__.cpython-314.pyc
+            │
+            ├───ivector
+            │       final.dubm
+            │       final.ie
+            │       final.mat
+            │       global_cmvn.stats
+            │       online_cmvn.conf
+            │
+            ├───license
+            │       antlr4-runtime-4.5.3.jar-NOTICE
+            │       bouncycastle-1.48-NOTICE
+            │       commons-compress-NOTICE
+            │       commons-io-2.4.jar-NOTICE
+            │       dev01_license.txt
+            │       fest-NOTICE
+            │       ffmpeg-LICENSE.md
+            │       ffmpeg-LICENSE.openh264
+            │       ffmpeg-SOURCE_CODE.TXT
+            │       freemarker-NOTICE
+            │       gson-2.3-NOTICE
+            │       hdrhistogram_license.txt
+            │       icudt76l.dat.txt
+            │       instantapps-api-NOTICE
+            │       javacpp-NOTICE
+            │       javahelp_license.txt
+            │       javolution_license.txt
+            │       jgraphx-3.4.0.1-NOTICE
+            │       jsr305-1.3.9-NOTICE
+            │       juniversalchardet-1.0.3.jar-NOTICE
+            │       kxml2-2.3.0-NOTICE
+            │       launcher-third-party-libraries.html
+            │       layoutlib.jar.txt
+            │       layoutlib_jni.dll.txt
+            │       layoutlib_jni.dylib.txt
+            │       layoutlib_jni.so.txt
+            │       leakcanary-NOTICE
+            │       libandroid_runtime.dll.txt
+            │       libandroid_runtime.dylib.txt
+            │       libandroid_runtime.so.txt
+            │       mockito-all-1.9.5-NOTICE
+            │       r8_license.txt
+            │       saxon-conditions.html
+            │       swt.jar-NOTICE
+            │       third-party-libraries.html
+            │       third-party-libraries.json
+            │       uiautomatorviewer.jar-NOTICE
+            │       yourkit-license-redist.txt
+            │
+            ├───llama
+            │   └───models
+            ├───llm
+            │   │   compression.py
+            │   │   ego_synthesizer.py
+            │   │   failover_engine.py
+            │   │   inference_router.py
+            │   │   local_interface.py
+            │   │   tokenizer.py
+            │   │   traits..py
+            │   │   __init__.py
+            │   │
+            │   ├───BAK
+            │   │   │   ego_synthesizer.py
+            │   │   │
+            │   │   └───es
+            │   │           ego_synthesizer.py
+            │   │
+            │   └───__pycache__
+            │           ego_synthesizer.cpython-314.pyc
+            │           local_interface.cpython-310.pyc
+            │           local_interface.cpython-314.pyc
+            │           __init__.cpython-310.pyc
+            │           __init__.cpython-314.pyc
+            │
+            ├───loop
+            │   │   circadian_rhythm.py
+            │   │   convergence.py
+            │   │   decay.py
+            │   │   divergence.py
+            │   │   recursion.py
+            │   │   recursive_guardrails.py
+            │   │   recursive_improvement.py
+            │   │   state.py
+            │   │   __init__.py
+            │   │
+            │   └───__pycache__
+            │           circadian_rhythm.cpython-314.pyc
+            │           convergence.cpython-314.pyc
+            │           decay.cpython-314.pyc
+            │           divergence.cpython-314.pyc
+            │           recursion.cpython-314.pyc
+            │           recursive_improvement.cpython-314.pyc
+            │           state.cpython-314.pyc
+            │           __init__.cpython-314.pyc
+            │
+            ├───mcp
+            │   │   agent_rounds.jsonl
+            │   │   audit.jsonl
+            │   │   code_database.py
+            │   │   gunicorn.conf.py
+            │   │   interceptor.py
+            │   │   knowledge.db
+            │   │   knowledge_db.py
+            │   │   mcp.service
+            │   │   mcp_config.json
+            │   │   mcp_server.py
+            │   │   mcp_server_bak.py
+            │   │   requirements.txt
+            │   │   sharpermemorymcp.txt
+            │   │   test_agent_full.py
+            │   │   tts_backend.py
+            │   │
+            │   ├───.git
+            │   ├───agent
+            │   │       agent.py
+            │   │       audit.py
+            │   │       circuit.py
+            │   │       config.py
+            │   │       context.py
+            │   │       core.py
+            │   │       idempotency.py
+            │   │       mcp.py
+            │   │       model.py
+            │   │       parser.py
+            │   │       ratelimit.py
+            │   │       router.py
+            │   │       server.py
+            │   │       tools.py
+            │   │       types.py
+            │   │       _types.py
+            │   │       __init__.py
+            │   │
+            │   ├───chroma_db
+            │   │   └───bf27c9af-578a-4b75-ba70-d5432438c83f
+            │   │           data_level0.bin
+            │   │           header.bin
+            │   │           length.bin
+            │   │           link_lists.bin
+            │   │
+            │   ├───curated_tokenizers
+            │   │       __init__.py
+            │   │
+            │   ├───memory
+            │   │   │   chroma_indexer.py
+            │   │   │   consolidation.py
+            │   │   │   decay.py
+            │   │   │   emotional_decay.py
+            │   │   │   emotional_decay_sharp.py
+            │   │   │   indexing.py
+            │   │   │   memory_ingestion_pipeline.py
+            │   │   │   memory_injection_optimizer.py
+            │   │   │   memory_sharp_integration.py
+            │   │   │   retrieval.py
+            │   │   │   safety_catch.py
+            │   │   │   sanitization.py
+            │   │   │   sharp_retrieval.py
+            │   │   │   store.py
+            │   │   │   system_memory.py
+            │   │   │   voice_integration.py
+            │   │   │   weaver.py
+            │   │   │   __init__.py
+            │   │   │
+            │   │   └───episodic
+            │   │           buffer.py
+            │   │           __init__.py
+            │   │
+            │   └───yay
+            │       │   .gitignore
+            │       │   .SRCINFO
+            │       │   PKGBUILD
+            │       │   yay-13.0.1-1-x86_64.pkg.tar.zst
+            │       │   yay-13.0.1.tar.gz
+            │       │   yay-debug-13.0.1-1-x86_64.pkg.tar.zst
+            │       │
+            │       ├───.git
+            │       │   │   config
+            │       │   │   description
+            │       │   │   HEAD
+            │       │   │   index
+            │       │   │   packed-refs
+            │       │   │
+            │       │   ├───hooks
+            │       │   │       applypatch-msg.sample
+            │       │   │       commit-msg.sample
+            │       │   │       fsmonitor-watchman.sample
+            │       │   │       post-update.sample
+            │       │   │       pre-applypatch.sample
+            │       │   │       pre-commit.sample
+            │       │   │       pre-merge-commit.sample
+            │       │   │       pre-push.sample
+            │       │   │       pre-rebase.sample
+            │       │   │       pre-receive.sample
+            │       │   │       prepare-commit-msg.sample
+            │       │   │       push-to-checkout.sample
+            │       │   │       sendemail-validate.sample
+            │       │   │       update.sample
+            │       │   │
+            │       │   ├───info
+            │       │   │       exclude
+            │       │   │
+            │       │   ├───logs
+            │       │   │   │   HEAD
+            │       │   │   │
+            │       │   │   └───refs
+            │       │   │       ├───heads
+            │       │   │       │       master
+            │       │   │       │
+            │       │   │       └───remotes
+            │       │   │           └───origin
+            │       │   │                   HEAD
+            │       │   │
+            │       │   ├───objects
+            │       │   │   ├───info
+            │       │   │   └───pack
+            │       │   │           pack-907dc6b1a0020c2d2a5e83a6c4fd0e52b75845fa.idx
+            │       │   │           pack-907dc6b1a0020c2d2a5e83a6c4fd0e52b75845fa.pack
+            │       │   │           pack-907dc6b1a0020c2d2a5e83a6c4fd0e52b75845fa.rev
+            │       │   │
+            │       │   └───refs
+            │       │       ├───heads
+            │       │       │       master
+            │       │       │
+            │       │       ├───remotes
+            │       │       │   └───origin
+            │       │       │           HEAD
+            │       │       │
+            │       │       └───tags
+            │       └───pkg
+            │           ├───yay
+            │           │   │   .BUILDINFO
+            │           │   │   .MTREE
+            │           │   │   .PKGINFO
+            │           │   │
+            │           │   └───usr
+            │           │       ├───bin
+            │           │       │       yay
+            │           │       │
+            │           │       └───share
+            │           │           ├───bash-completion
+            │           │           │   └───completions
+            │           │           │           yay
+            │           │           │
+            │           │           ├───fish
+            │           │           │   └───vendor_completions.d
+            │           │           │           yay.fish
+            │           │           │
+            │           │           ├───locale
+            │           │           │   ├───ca
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   ├───ca_ES
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   ├───cs
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   ├───da
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   ├───da_DK
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   ├───de
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   ├───en
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   ├───es
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   ├───eu
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   ├───fi
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   ├───fr
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   ├───fr_FR
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   ├───he
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   ├───he_IL
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   ├───hu
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   ├───id
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   ├───it_IT
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   ├───ja
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   ├───ko
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   ├───nl
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   ├───pl
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   ├───pl_PL
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   ├───pt
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   ├───pt_BR
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   ├───ru
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   ├───ru_RU
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   ├───sk
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   ├───sv
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   ├───tr
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   ├───uk
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   ├───vi
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   ├───vi_VN
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   ├───zh_CN
+            │           │           │   │   └───LC_MESSAGES
+            │           │           │   │           yay.mo
+            │           │           │   │
+            │           │           │   └───zh_TW
+            │           │           │       └───LC_MESSAGES
+            │           │           │               yay.mo
+            │           │           │
+            │           │           ├───man
+            │           │           │   └───man8
+            │           │           │           yay.8.gz
+            │           │           │
+            │           │           └───zsh
+            │           │               └───site-functions
+            │           │                       _yay
+            │           │
+            │           └───yay-debug
+            │               │   .BUILDINFO
+            │               │   .MTREE
+            │               │   .PKGINFO
+            │               │
+            │               └───usr
+            │                   └───lib
+            │                       └───debug
+            │                           └───.build-id
+            │                               └───d2
+            ├───memory
+            │   │   chroma_indexer.py
+            │   │   consolidation.py
+            │   │   decay.py
+            │   │   emotional_decay.py
+            │   │   indexing.py
+            │   │   memory_ingestion_pipeline.py
+            │   │   memory_injection_optimizer.py
+            │   │   memory_sharp_integration.py
+            │   │   retrieval.py
+            │   │   safety_catch.py
+            │   │   sanitization.py
+            │   │   store.py
+            │   │   system_memory.py
+            │   │   voice_integration.py
+            │   │   weaver.py
+            │   │   __init__.py
+            │   │
+            │   ├───episodic
+            │   │       buffer.py
+            │   │       __init__.py
+            │   │
+            │   └───__pycache__
+            │           consolidation.cpython-314.pyc
+            │           decay.cpython-314.pyc
+            │           emotional_decay.cpython-314.pyc
+            │           indexing.cpython-314.pyc
+            │           memory_sharp_integration.cpython-314.pyc
+            │           retrieval.cpython-314.pyc
+            │           store.cpython-314.pyc
+            │           voice_integration.cpython-314.pyc
+            │           weaver.cpython-314.pyc
+            │           __init__.cpython-314.pyc
+            │
+            ├───metrics
+            │       clarity.py
+            │       similarity.py
+            │       __init__.py
+            │
+            ├───modules
+            │       module-descriptors.dat
+            │       module-descriptors.jar
+            │
+            ├───runtime
+            │   │   execution.py
+            │   │   failover.py
+            │   │   gpu.py
+            │   │   health.py
+            │   │   high_availability_orchestrator.py
+            │   │   queues.py
+            │   │   resources.py
+            │   │   watchdog.py
+            │   │   __init__.py
+            │   │
+            │   └───risa_memory
+            │           risa_log.json
+            │
+            ├───Scripts
+            │       activate
+            │       activate.bat
+            │       activate.fish
+            │       Activate.ps1
+            │       deactivate.bat
+            │       pip.exe
+            │       pip3.14.exe
+            │       pip3.exe
+            │       python.exe
+            │       pythonw.exe
+            │
+            ├───state
+            ├───state_bus
+            │   └───registry
+            ├───telemetry
+            │       entropy.py
+            │       metrics.py
+            │       profiling.py
+            │       replay.py
+            │       trace.py
+            │       __init__.py
+            │
+            ├───upulse
+            │       affect.py
+            │       arkwell_embedder.py
+            │       arousal.py
+            │       coversation_scoring.py
+            │       inquisitiveness.py
+            │       integrator.py
+            │       memory.py
+            │       midas_emotional_engine.py
+            │       mirror_steady_fine_sweep.py
+            │       mirror_steady_sweep.py
+            │       observer_pulse.py
+            │       qbit_gateway.py
+            │       soulfile.py
+            │       synapsestate.py
+            │       treaty.py
+            │       valence.py
+            │       __init__.py
+            │
+            └───voice
+                    install_voice_presence.sh
+                    presence.py
+
+PS C:\Users\User\AndroidStudioProjects\git_stage_linux\app\gitstage>
