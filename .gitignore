@@ -1,2 +1,32 @@
+﻿# Secrets
 .env
 .env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.hypothesis/
+
+# Data (per-install)
+central_memory/autobiography.jsonl
+central_memory/persona_memory.json
+central_memory/active/*
+central_memory/contexts/*
+central_memory/embeddings/*
+central_memory/emotional/*
+central_memory/interactions/*
+runtime/risa_memory/risa_log.json
+mcp/chroma_db/*
+state/identity_lock.json
+state/*.json
+
+# Accidental packages
+mcp/yay/
+
+# Models
+*.gguf
+*.safetensors
+llama/models/*
